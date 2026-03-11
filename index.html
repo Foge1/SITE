@@ -352,6 +352,10 @@
   .f-links a { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.32); text-decoration: none; transition: color 0.2s; }
   .f-links a:hover { color: #fff; }
 
+  .mobile-call-cta {
+    display: none;
+  }
+
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
   .reveal.visible { opacity: 1; transform: none; }
   .rd1{transition-delay:.06s} .rd2{transition-delay:.12s} .rd3{transition-delay:.18s} .rd4{transition-delay:.24s}
@@ -499,6 +503,48 @@
       aspect-ratio: 16 / 10;
     }
     .photo-strip-item:last-child { border-bottom: none; }
+  }
+
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: calc(84px + env(safe-area-inset-bottom));
+    }
+
+    .mobile-call-cta {
+      position: fixed;
+      left: 14px;
+      right: 14px;
+      bottom: calc(12px + env(safe-area-inset-bottom));
+      z-index: 90;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      border-radius: 14px;
+      border: 1px solid var(--orange-dk);
+      background: var(--orange);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      box-shadow: 0 10px 24px rgba(17, 17, 16, 0.22);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .mobile-call-cta:hover {
+      background: var(--orange-dk);
+    }
+
+    .mobile-call-cta:active {
+      transform: translateY(1px);
+      box-shadow: 0 6px 16px rgba(17, 17, 16, 0.2);
+    }
+
+    .mobile-call-cta:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
   }
 </style>
 </head>
@@ -767,6 +813,8 @@
     <li><a href="#">Оферта</a></li>
   </ul>
 </footer>
+
+<a href="tel:+79009529391" class="mobile-call-cta" aria-label="Позвонить по номеру +7 900 952-93-91">Позвонить</a>
 
 <script>
   const navbar = document.getElementById('navbar');
