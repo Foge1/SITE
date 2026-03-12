@@ -414,6 +414,18 @@
   }
   .submit-btn:hover { background: var(--orange-dk); }
 
+  .form-message {
+    margin-top: 10px;
+    min-height: 22px;
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  .form-message.is-success { color: #1f7a3f; }
+  .form-message.is-error { color: #b1261f; }
+
   footer {
     background: var(--ink); padding: 30px 48px;
     display: flex; justify-content: space-between; align-items: center;
@@ -930,7 +942,7 @@
       <div class="ci-row"><span class="ci-label">Работаем</span><span class="ci-val">Ежедневно 7:00 — 23:00</span></div>
       <div class="ci-row"><span class="ci-label">Район</span><span class="ci-val">По городу и пригородам до 100 км</span></div>
     </div>
-   <form action="/send.php" method="post">
+   <form action="/send.php" method="post" id="contact-form">
   <div class="contact-form reveal rd2">
     <div class="field-wrap">
       <input type="text" name="name" placeholder="Ваше имя">
@@ -962,6 +974,7 @@
     </div>
 
     <button class="submit-btn" type="submit">Отправить заявку</button>
+    <div class="form-message" id="form-message" aria-live="polite"></div>
   </div>
 </form>
 </section>
@@ -1081,6 +1094,55 @@
     if (!navbar) return;
     navbar.classList.toggle('scrolled', window.scrollY > 10);
   });
+
+  const contactForm = document.getElementById('contact-form');
+  const formMessage = document.getElementById('form-message');
+
+  if (contactForm && formMessage) {
+    const setFormMessage = (message, state) => {
+      formMessage.textContent = message;
+      formMessage.classList.remove('is-success', 'is-error');
+      if (state) {
+        formMessage.classList.add(state);
+      }
+    };
+
+    contactForm.addEventListener('submit', async event => {
+      event.preventDefault();
+
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const formData = new FormData(contactForm);
+
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+
+      setFormMessage('Отправляем заявку...', '');
+
+      try {
+        const response = await fetch('/send.php', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result && result.ok === true) {
+          setFormMessage('Спасибо! Заявка отправлена, мы скоро перезвоним.', 'is-success');
+          contactForm.reset();
+          return;
+        }
+
+        setFormMessage('Не удалось отправить заявку. Проверьте данные и попробуйте ещё раз.', 'is-error');
+      } catch (error) {
+        setFormMessage('Ошибка сети. Проверьте интернет-соединение и попробуйте снова.', 'is-error');
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+      }
+    });
+  }
 </script>
 </body>
 </html>
