@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ГРУЗЪ — Грузчики и перевозки в Воронеже</title>
+<title>Грузчики в Воронеже и пригороде — цены, газель с грузчиками | ГРУЗЪ</title>
+<meta name="description" content="Грузчики в Воронеже и пригороде: квартирный и офисный переезд, газель с грузчиками, перевозка мебели и вывоз мусора. Честные цены, быстрый выезд, своя бригада.">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -324,6 +325,68 @@
   }
   .btn-orange:hover { background: var(--orange-dk); }
 
+
+  .seo-services,
+  .geo-coverage { border-bottom: 1px solid var(--border); }
+
+  .seo-copy {
+    padding: 36px 48px 28px;
+    max-width: 980px;
+  }
+
+  .seo-copy p {
+    font-size: 14px;
+    line-height: 1.72;
+    color: var(--ink-mid);
+    margin-bottom: 14px;
+  }
+
+  .seo-copy p:last-child { margin-bottom: 0; }
+
+  .seo-services-grid,
+  .geo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .seo-service-item,
+  .geo-item {
+    padding: 24px 28px;
+    border-top: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    background: var(--white);
+    transition: background 0.22s;
+  }
+
+  .seo-service-item:nth-child(3n),
+  .geo-item:nth-child(3n) { border-right: none; }
+
+  .seo-service-item:hover,
+  .geo-item:hover { background: var(--off); }
+
+  .seo-service-item strong,
+  .geo-item strong {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .seo-service-item span,
+  .geo-item span {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-mid);
+  }
+
+  .geo-note {
+    padding: 18px 48px 28px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
   .contact { border-bottom: 1px solid var(--border); }
   .contact-body { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .contact-info { padding: 48px; border-right: 1px solid var(--border); }
@@ -463,6 +526,12 @@
     .band-item:nth-child(2) { border-right: none; }
     .band-item { border-bottom: 1px solid rgba(255,255,255,0.15); }
     .process-grid { grid-template-columns: 1fr 1fr; }
+    .seo-copy { padding: 30px 20px 24px; }
+    .seo-services-grid, .geo-grid { grid-template-columns: 1fr 1fr; }
+    .seo-service-item, .geo-item { padding: 22px 20px; border-right: 1px solid var(--border); }
+    .seo-service-item:nth-child(2n), .geo-item:nth-child(2n) { border-right: none; }
+    .seo-service-item:nth-child(3n), .geo-item:nth-child(3n) { border-right: 1px solid var(--border); }
+    .geo-note { padding: 16px 20px 22px; }
     .process-step:nth-child(2n) { border-right: none; }
     .process-step { border-bottom: 1px solid var(--border); }
     .process-step:nth-child(3), .process-step:nth-child(4) { border-bottom: none; }
@@ -503,6 +572,10 @@
       padding: 30px 20px;
     }
     .process-step:nth-child(3) { border-bottom: 1px solid var(--border); }
+    .seo-services-grid, .geo-grid { grid-template-columns: 1fr; }
+    .seo-service-item, .geo-item,
+    .seo-service-item:nth-child(3n), .geo-item:nth-child(3n),
+    .seo-service-item:nth-child(2n), .geo-item:nth-child(2n) { border-right: none; }
     .process-step:last-child { border-bottom: none; }
     .field-wrap input,
     .field-wrap textarea,
@@ -561,6 +634,22 @@
     }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "ГРУЗЪ",
+  "telephone": "+7 900 952-93-91",
+  "areaServed": [
+    "Воронеж",
+    "Воронежская область"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Воронеж"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -764,6 +853,50 @@
       <p class="ps-text">Всё на месте, мусор убран. Платите по факту — только за время работы.</p>
     </div>
   </div>
+</section>
+
+<section class="seo-services" aria-labelledby="seo-services-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Услуги в городе</div>
+      <h2 class="sec-title" id="seo-services-title">ГРУЗЧИКИ И ПЕРЕЕЗДЫ БЕЗ ЛИШНИХ СЛОВ</h2>
+    </div>
+    <p class="sec-sub">Понятный сервис и прозрачный расчёт по Воронежу.</p>
+  </div>
+  <div class="seo-copy reveal">
+    <p>Если вам нужны <strong>грузчики в Воронеже</strong> с аккуратной работой и понятной стоимостью, мы закрываем задачи под ключ: от срочного подъёма на этаж до полного переезда. Работаем в формате «позвонили — договорились — приехали вовремя», без посредников и скрытых доплат.</p>
+    <p>Берём на себя <strong>квартирный переезд</strong> и <strong>офисный переезд</strong>, подаём <strong>газель с грузчиками</strong>, выполняем <strong>перевозку мебели</strong> и <strong>вывоз мусора</strong> после переезда или ремонта. Выезжаем по городу, а также в <strong>Воронеж и пригород</strong>.</p>
+  </div>
+  <div class="seo-services-grid">
+    <div class="seo-service-item reveal rd1"><strong>Грузчики в Воронеже</strong><span>На час или на полный объём работ.</span></div>
+    <div class="seo-service-item reveal rd2"><strong>Газель с грузчиками</strong><span>Машина и бригада в одном выезде.</span></div>
+    <div class="seo-service-item reveal rd3"><strong>Квартирный переезд</strong><span>Сборка, переноска и перевозка без суеты.</span></div>
+    <div class="seo-service-item reveal rd1"><strong>Офисный переезд</strong><span>Организованно, с минимальными простоями.</span></div>
+    <div class="seo-service-item reveal rd2"><strong>Перевозка мебели</strong><span>Бережная погрузка и доставка по адресу.</span></div>
+    <div class="seo-service-item reveal rd3"><strong>Вывоз мусора</strong><span>Упаковка и вынос старой мебели, хлама и коробок.</span></div>
+  </div>
+</section>
+
+<section class="geo-coverage" aria-labelledby="geo-coverage-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">География</div>
+      <h2 class="sec-title" id="geo-coverage-title">РАБОТАЕМ ПО РАЙОНАМ ВОРОНЕЖА</h2>
+    </div>
+    <p class="sec-sub">Локальные выезды по городу и пригородным направлениям.</p>
+  </div>
+  <div class="seo-copy reveal">
+    <p>Бригады выезжают ежедневно по всем ключевым районам города, поэтому удобно вызвать команду рядом с вашим адресом и не переплачивать за лишнее ожидание.</p>
+  </div>
+  <div class="geo-grid">
+    <div class="geo-item reveal rd1"><strong>Центральный район</strong><span>Квартиры, офисы и точечные выезды.</span></div>
+    <div class="geo-item reveal rd2"><strong>Коминтерновский район</strong><span>Переезды, перевозка мебели и техника.</span></div>
+    <div class="geo-item reveal rd3"><strong>Советский район</strong><span>Грузчики на час и комплексные работы.</span></div>
+    <div class="geo-item reveal rd1"><strong>Ленинский район</strong><span>Быстрая подача машины и бригады.</span></div>
+    <div class="geo-item reveal rd2"><strong>Левобережный район</strong><span>Дом, склад, офис — в одном маршруте.</span></div>
+    <div class="geo-item reveal rd3"><strong>Железнодорожный район</strong><span>Выезды по графику и срочные заявки.</span></div>
+  </div>
+  <p class="geo-note reveal">Также обслуживаем пригородные направления до 100 км от Воронежа по предварительному согласованию.</p>
 </section>
 
 <div class="cta-strip reveal">
