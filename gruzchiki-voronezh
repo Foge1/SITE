@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Грузчики в Воронеже — вызов бригады на час и на смену | ГРУЗЪ</title>
+  <meta name="description" content="Профессиональные грузчики в Воронеже: подъём мебели, разгрузка, перенос вещей и помощь при переезде. Быстрый выезд, понятные условия, работа без посредников.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="service-pages.css">
+</head>
+<body>
+<nav id="navbar">
+  <a href="index (1).html" class="nav-logo">ГРУЗ<span>Ъ</span></a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Открыть меню">☰</button>
+  <ul class="nav-links" id="navLinks" aria-hidden="true">
+    <li><a href="index (1).html#services">Все услуги</a></li>
+    <li><a href="#benefits">Преимущества</a></li>
+    <li><a href="#pricing">Условия</a></li>
+    <li><a href="#contact">Заявка</a></li>
+  </ul>
+  <a href="tel:+79009529391" class="nav-phone">+7 900 952-93-91</a>
+</nav>
+<section class="hero">
+  <div class="hero-left"><div>
+    <div class="hero-eyebrow"><div class="eyebrow-dot"></div><span class="eyebrow-text">Бригада без посредников · Ежедневно с 7:00</span></div>
+    <h1 class="hero-title">ГРУЗЧИКИ <span class="orange">В ВОРОНЕЖЕ</span></h1>
+    <p class="hero-desc">Подключаем людей под вашу задачу: от аккуратного подъёма мебели до полной разгрузки машины. Работаем быстро, спокойно и без лишних обещаний.</p>
+    <div class="hero-cta-row"><a href="#contact" class="btn-main">Оставить заявку</a><a href="tel:+79009529391" class="btn-outline">Позвонить</a></div>
+  </div>
+  <div class="hero-stats-row"><div class="hero-stat"><div class="stat-big">12<em>+</em></div><div class="stat-sm">Лет практики</div></div><div class="hero-stat"><div class="stat-big">1000<em>+</em></div><div class="stat-sm">Выездов в год</div></div><div class="hero-stat"><div class="stat-big">1<em>ч</em></div><div class="stat-sm">Подача по городу</div></div></div>
+  </div>
+  <div class="hero-right"><div class="hero-photo"><img src="https://images.unsplash.com/photo-1600518464441-9154a4dea21b?auto=format&fit=crop&w=1600&q=80" alt="Бригада грузчиков аккуратно переносит коробки при переезде"></div><div class="hero-panel"><p>Подходит, когда нужна именно физическая помощь: перенос, спуск/подъём, расстановка, погрузка в ваш транспорт или в нашу машину.</p></div></div>
+</section>
+<section><div class="sec-head"><div><div class="sec-label">Услуга</div><h2 class="sec-title">КРАТКО О СЕРВИСЕ</h2></div><p class="sec-sub">Понятный процесс без перегруза деталями.</p></div>
+<div class="service-copy"><p>Если вам нужны грузчики в Воронеже без долгих согласований, мы подберём бригаду под объём и этажность. Можно заказать людей на точечную помощь или на весь день — например, для разгрузки фуры, переноса мебели в квартире или работ на складе.</p><p>Перед выездом уточняем детали: что переносим, есть ли лифт, нужна ли упаковка и инструмент. За счёт этого команда приезжает подготовленной и работает в нормальном темпе.</p></div></section>
+<section id="benefits"><div class="sec-head"><div><div class="sec-label">Преимущества</div><h2 class="sec-title">ЧЕМ УДОБЕН ЭТОТ ФОРМАТ</h2></div><p class="sec-sub">Фокус на реальной пользе для клиента.</p></div>
+<div class="benefits-grid">    <article class="info-card"><h3>Прозрачный расчёт</h3><p>Почасовой тариф, понятный минимум по времени и без скрытых доплат в конце работ.</p></article>
+    <article class="info-card"><h3>Сильная базовая команда</h3><p>Не случайные исполнители: свои люди, которые регулярно работают вместе.</p></article>
+    <article class="info-card"><h3>Аккуратная переноска</h3><p>Соблюдаем порядок на объекте, бережно работаем с техникой и мебелью.</p></article>
+    <article class="info-card"><h3>Гибкий формат</h3><p>Можно заказать от двух человек до усиленной бригады под тяжёлые позиции.</p></article>
+</div></section>
+<section><div class="sec-head"><div><div class="sec-label">Когда подходит</div><h2 class="sec-title">ТИПОВЫЕ СЦЕНАРИИ</h2></div><p class="sec-sub">Коротко по самым частым задачам.</p></div>
+<div class="fit-grid"><article class="info-card"><ul><li>Разгрузка стройматериалов и бытовой техники.</li><li>Подъём мебели без грузового лифта.</li><li>Перенос вещей между адресами в одном районе.</li><li>Помощь в день квартирного переезда.</li></ul></article><article class="info-card"><ul><li>Работы на складе и в торговой точке.</li><li>Подготовка офиса к перестановке.</li><li>Вынос старой мебели перед ремонтом.</li><li>Точечная помощь на 2–4 часа.</li></ul></article></div></section>
+<section id="pricing"><div class="sec-head"><div><div class="sec-label">Стоимость</div><h2 class="sec-title">УСЛОВИЯ И ОПЛАТА</h2></div><p class="sec-sub">Без спорных обещаний и скрытых пунктов.</p></div>
+<div class="pricing-wrap"><div class="pricing-main"><div class="price-line"><strong>Грузчик</strong><span>650 ₽/час</span></div><div class="price-line"><strong>Минимальный заказ</strong><span>2 часа по городу</span></div><div class="price-line"><strong>Срочный выезд</strong><span>по доступности бригад</span></div></div><div class="pricing-note"><p>Для сложных подъёмов, длинных переносов и работ за пределами города предварительно согласуем формат и итоговую смету.</p></div></div></section>
+<section class="contact" id="contact"><div class="sec-head"><div><div class="sec-label">Контакт</div><h2 class="sec-title">ОСТАВЬТЕ ЗАЯВКУ</h2></div><p class="sec-sub">Ответим и согласуем выезд в удобное время.</p></div>
+<div class="contact-body"><div class="contact-info"><div class="ci-row"><span class="ci-label">Телефон</span><a class="ci-val" href="tel:+79009529391">+7 900 952-93-91</a></div><div class="ci-row"><span class="ci-label">Telegram</span><a class="ci-val" href="https://t.me/gruzvrn1" target="_blank" rel="noopener">@gruzvrn1</a></div><div class="ci-row"><span class="ci-label">Режим</span><span class="ci-val">Ежедневно 7:00 — 23:00</span></div><div class="ci-row"><span class="ci-label">Зона</span><span class="ci-val">Воронеж и пригород</span></div></div>
+<form action="/send.php" method="post" id="contact-form" class="contact-form"><div class="field-wrap"><input type="text" name="name" placeholder="Ваше имя"></div><div class="field-wrap"><input type="tel" name="phone" placeholder="Телефон для связи" required></div><div class="field-wrap"><select name="service" required><option value="" disabled selected>Что нужно сделать?</option><option>Грузчики на час</option><option>Разгрузка и перенос</option><option>Подъём на этаж</option><option>Другое</option></select></div><div class="field-wrap"><input type="text" name="address" placeholder="Адрес"></div><div class="field-wrap"><textarea name="comment" rows="4" placeholder="Кратко опишите задачу"></textarea></div><button class="submit-btn" type="submit">Отправить заявку</button><div class="form-message" id="form-message" aria-live="polite"></div></form></div></section>
+<footer><a href="index (1).html" class="f-logo">ГРУЗ<span>Ъ</span></a><span class="f-copy">© 2024 ГРУЗЪ — Переезды и перевозки по городу и области</span></footer>
+<script src="service-pages.js"></script>
+</body></html>
