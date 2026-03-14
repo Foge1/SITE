@@ -1,48 +1,5 @@
-<section class="hero service-hero">
-  <div class="hero-left">
-    <div>
-      <div class="service-breadcrumbs reveal">
-        <a href="{{ '/' | url }}">Главная</a>
-        <span>/</span>
-        <span>{{ service.h1 }}</span>
-      </div>
-      <div class="hero-eyebrow">
-        <div class="eyebrow-dot"></div>
-        <span class="eyebrow-text">{{ service.hero.eyebrow }}</span>
-      </div>
-      <h1 class="hero-title">
-        <span class="hero-title-line">{{ service.h1 }}</span>
-      </h1>
-      <p class="service-offer">{{ service.hero.offer }}</p>
-      <p class="hero-desc">{{ service.hero.text }}</p>
-      <div class="hero-cta-row">
-        <a href="#contact" class="btn-main"><span>{{ service.hero.primaryCtaLabel }}</span></a>
-        <a href="{{ '/' | url }}" class="btn-outline">{{ service.hero.secondaryCtaLabel }}</a>
-      </div>
-    </div>
-    <div class="hero-stats-row">
-      {%- for stat in service.hero.stats -%}
-      <div class="hero-stat">
-        <div class="stat-big">{{ stat.value }}</div>
-        <div class="stat-sm">{{ stat.label }}</div>
-      </div>
-      {%- endfor -%}
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-photo">
-      <img src="{{ '/assets/img/hero.jpg' | url }}" alt="{{ service.h1 }}">
-    </div>
-    <div class="hero-right-bottom">
-      {%- for fact in service.hero.facts -%}
-      <div class="hri">
-        <div class="hri-label">{{ fact.label }}</div>
-        <div class="hri-val">{{ fact.value }}</div>
-      </div>
-      {%- endfor -%}
-    </div>
-  </div>
-</section>
+{%- set serviceHeroVariant = 'default' -%}
+{% include "service-hero.njk" %}
 
 <section class="seo-services" id="services" aria-labelledby="service-includes-title">
   <div class="sec-head reveal">

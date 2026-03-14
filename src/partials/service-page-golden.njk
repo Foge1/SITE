@@ -1,51 +1,6 @@
 {%- set landing = service.landing -%}
-{%- set heroData = landing.hero -%}
-{%- set heroImageSrc = '/assets/img/hero.jpg' -%}
-{%- if service.slug == 'kvartirnyj-pereezd-voronezh' -%}
-  {%- set heroImageSrc = '/assets/img/kvartirnyj-pereezd.webp' -%}
-{%- endif -%}
-<section class="hero service-hero service-hero-v2 hero-grid">
-  <div class="hero-left">
-    <div class="hero-text">
-      <div class="service-breadcrumbs reveal">
-        <a href="{{ '/' | url }}">Главная</a>
-        <span>/</span>
-        <span>{{ service.h1 }}</span>
-      </div>
-      <div class="service-label-pill reveal rd1">{{ heroData.label }}</div>
-      <h1 class="hero-title">
-        <span class="hero-title-line">{{ heroData.title or service.h1 }}</span>
-      </h1>
-      <p class="service-hero-subtitle">{{ heroData.subtitle }}</p>
-      <div class="hero-cta-row">
-        <a href="#contact" class="btn-main"><span>{{ heroData.primaryCtaLabel }}</span></a>
-        <a href="{{ heroData.secondaryCtaHref or ('/' | url) }}" class="btn-outline">{{ heroData.secondaryCtaLabel }}</a>
-      </div>
-      <ul class="service-trust-list">
-        {%- for item in heroData.trustBullets -%}
-        <li class="service-trust-item reveal rd{{ (loop.index0 % 4) + 1 }}">
-          <span class="service-trust-dot"></span>
-          <span>{{ item }}</span>
-        </li>
-        {%- endfor -%}
-      </ul>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="service-visual reveal rd2">
-      <img src="{{ heroImageSrc | url }}" alt="{{ service.h1 }}">
-      <div class="service-visual-card">
-        <span class="service-visual-badge">{{ heroData.visualBadge }}</span>
-        <h2 class="service-visual-title">{{ heroData.visualTitle }}</h2>
-        <ul class="service-visual-list">
-          {%- for point in heroData.visualPoints -%}
-          <li>{{ point }}</li>
-          {%- endfor -%}
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+{%- set serviceHeroVariant = 'golden' -%}
+{% include "service-hero.njk" %}
 
 <section class="service-block" id="why" aria-labelledby="service-adv-title">
   <div class="sec-head reveal">
