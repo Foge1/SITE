@@ -15,12 +15,21 @@ eleventyComputed:
 {% include "head.njk" %}
 <body>
 {% include "header-nav.njk" %}
+{% set isGoldenService = service.layout == 'golden' and service.landing %}
+{% if isGoldenService %}
+{% include "service-page-golden.njk" %}
+{% else %}
 {% include "service-page-content.njk" %}
 {% include "geo-coverage.njk" %}
-{% set ctaTitleMain = service.finalCta.titleMain %}
-{% set ctaTitleAccent = service.finalCta.titleAccent %}
-{% set ctaSub = service.finalCta.subtitle %}
-{% set ctaButtonLabel = service.finalCta.buttonLabel %}
+{% endif %}
+{% set finalCtaData = service.finalCta %}
+{% if isGoldenService and service.landing.finalCta %}
+{% set finalCtaData = service.landing.finalCta %}
+{% endif %}
+{% set ctaTitleMain = finalCtaData.titleMain %}
+{% set ctaTitleAccent = finalCtaData.titleAccent %}
+{% set ctaSub = finalCtaData.subtitle %}
+{% set ctaButtonLabel = finalCtaData.buttonLabel %}
 {% include "cta.njk" %}
 {% include "contact.njk" %}
 {% include "footer.njk" %}

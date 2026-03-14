@@ -1,0 +1,178 @@
+{%- set landing = service.landing -%}
+{%- set heroData = landing.hero -%}
+<section class="hero service-hero service-hero-v2">
+  <div class="hero-left">
+    <div>
+      <div class="service-breadcrumbs reveal">
+        <a href="{{ '/' | url }}">Главная</a>
+        <span>/</span>
+        <span>{{ service.h1 }}</span>
+      </div>
+      <div class="service-label-pill reveal rd1">{{ heroData.label }}</div>
+      <h1 class="hero-title">
+        <span class="hero-title-line">{{ heroData.title or service.h1 }}</span>
+      </h1>
+      <p class="service-hero-subtitle">{{ heroData.subtitle }}</p>
+      <div class="hero-cta-row">
+        <a href="#contact" class="btn-main"><span>{{ heroData.primaryCtaLabel }}</span></a>
+        <a href="{{ heroData.secondaryCtaHref or ('/' | url) }}" class="btn-outline">{{ heroData.secondaryCtaLabel }}</a>
+      </div>
+      <ul class="service-trust-list">
+        {%- for item in heroData.trustBullets -%}
+        <li class="service-trust-item reveal rd{{ (loop.index0 % 4) + 1 }}">
+          <span class="service-trust-dot"></span>
+          <span>{{ item }}</span>
+        </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="service-visual reveal rd2">
+      <img src="{{ '/assets/img/hero.jpg' | url }}" alt="{{ service.h1 }}">
+      <div class="service-visual-card">
+        <span class="service-visual-badge">{{ heroData.visualBadge }}</span>
+        <h2 class="service-visual-title">{{ heroData.visualTitle }}</h2>
+        <ul class="service-visual-list">
+          {%- for point in heroData.visualPoints -%}
+          <li>{{ point }}</li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-block" id="why" aria-labelledby="service-adv-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Ключевые преимущества</div>
+      <h2 class="sec-title" id="service-adv-title">ЗА ЧТО НАС ВЫБИРАЮТ</h2>
+    </div>
+    <p class="sec-sub">Коротко о том, что важно для спокойного переезда.</p>
+  </div>
+  <div class="service-adv-grid">
+    {%- for item in landing.advantages -%}
+    <article class="service-adv-card reveal rd{{ (loop.index0 % 4) + 1 }}">
+      <h3 class="service-adv-title">{{ item.title }}</h3>
+      <p class="service-adv-text">{{ item.text }}</p>
+    </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="service-block" id="services" aria-labelledby="service-includes-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Что входит в услугу</div>
+      <h2 class="sec-title" id="service-includes-title">ПОД КЛЮЧ ОТ СТАРТА ДО ФИНИША</h2>
+    </div>
+    <p class="sec-sub">Четкий набор работ без «додумываний» по ходу.</p>
+  </div>
+  <div class="service-include-panel reveal">
+    <ul class="service-include-list">
+      {%- for item in landing.includes -%}
+      <li class="service-include-item">
+        <span class="service-check-mark" aria-hidden="true"></span>
+        <span>{{ item }}</span>
+      </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+<section class="service-block" aria-labelledby="service-scenarios-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Когда услуга подходит</div>
+      <h2 class="sec-title" id="service-scenarios-title">ТИПОВЫЕ СЦЕНАРИИ</h2>
+    </div>
+    <p class="sec-sub">Ситуации, где важны скорость, аккуратность и прогнозируемость.</p>
+  </div>
+  <div class="service-scenarios-grid">
+    {%- for item in landing.scenarios -%}
+    <article class="service-scenario-card reveal rd{{ (loop.index0 % 4) + 1 }}">
+      <h3 class="service-scenario-title">{{ item.title }}</h3>
+      <p class="service-scenario-text">{{ item.text }}</p>
+    </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="process" id="process" aria-labelledby="service-process-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Как мы работаем</div>
+      <h2 class="sec-title" id="service-process-title">ПРОСТОЙ ПОНЯТНЫЙ ПРОЦЕСС</h2>
+    </div>
+    <p class="sec-sub">Четыре шага от звонка до завершенного переезда.</p>
+  </div>
+  <div class="process-grid">
+    {%- for step in landing.steps -%}
+    <div class="process-step reveal rd{{ (loop.index0 % 4) + 1 }}">
+      <div class="ps-num">0{{ loop.index }}</div>
+      <div class="ps-title">{{ step.title }}</div>
+      <p class="ps-text">{{ step.text }}</p>
+    </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="service-pricing-compact" aria-labelledby="service-pricing-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Стоимость</div>
+      <h2 class="sec-title" id="service-pricing-title">ОТ ЧЕГО ЗАВИСИТ РАСЧЕТ</h2>
+    </div>
+    <p class="sec-sub">Только реальные параметры, без выдуманных тарифов.</p>
+  </div>
+  <div class="service-pricing-body reveal">
+    <p class="service-pricing-lead">{{ landing.pricing.lead }}</p>
+    <div class="service-pricing-grid">
+      {%- for factor in landing.pricing.factors -%}
+      <article class="service-pricing-item">
+        <h3 class="service-pricing-item-title">{{ factor.title }}</h3>
+        <p class="service-pricing-item-text">{{ factor.text }}</p>
+      </article>
+      {%- endfor -%}
+    </div>
+    <p class="service-pricing-note">{{ landing.pricing.note }}</p>
+  </div>
+</section>
+
+<section class="service-faq service-faq-compact" aria-labelledby="service-faq-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">FAQ</div>
+      <h2 class="sec-title" id="service-faq-title">КОРОТКИЕ ОТВЕТЫ ПО ДЕЛУ</h2>
+    </div>
+    <p class="sec-sub">То, что обычно спрашивают перед оформлением заявки.</p>
+  </div>
+  <div class="service-faq-grid">
+    {%- for item in landing.faq -%}
+    <article class="service-faq-item reveal rd{{ (loop.index0 % 4) + 1 }}">
+      <h3 class="service-faq-question">{{ item.question }}</h3>
+      <p class="service-faq-answer">{{ item.answer }}</p>
+    </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for item in landing.faq -%}
+    {
+      "@type": "Question",
+      "name": {{ item.question | dump | safe }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.answer | dump | safe }}
+      }
+    }{% if not loop.last %},{% endif %}
+    {%- endfor -%}
+  ]
+}
+</script>

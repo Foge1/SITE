@@ -255,6 +255,271 @@
     min-height: auto;
   }
 
+  .service-hero-v2 .hero-left {
+    padding-bottom: 48px;
+  }
+
+  .service-hero-v2 .hero-right {
+    padding: 24px;
+    background: var(--ink);
+  }
+
+  .service-hero-v2 .hero-title {
+    max-width: 11ch;
+    margin-top: 16px;
+  }
+
+  .service-label-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    background: var(--off);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+  }
+
+  .service-hero-subtitle {
+    margin-top: 18px;
+    max-width: 560px;
+    font-size: 18px;
+    line-height: 1.56;
+    color: var(--ink-mid);
+    opacity: 0;
+    animation: fadeUp 0.7s 0.3s forwards;
+  }
+
+  .service-trust-list {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 16px;
+    list-style: none;
+  }
+
+  .service-trust-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+
+  .service-trust-dot {
+    width: 8px;
+    height: 8px;
+    margin-top: 7px;
+    border-radius: 50%;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  .service-visual {
+    position: relative;
+    height: 100%;
+    min-height: 520px;
+    overflow: hidden;
+  }
+
+  .service-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(17,17,16,0.08) 0%, rgba(17,17,16,0.6) 100%);
+  }
+
+  .service-visual img {
+    width: 100%;
+    height: 100%;
+    min-height: 520px;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.84);
+  }
+
+  .service-visual-card {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    z-index: 2;
+    max-width: 380px;
+    width: calc(100% - 36px);
+    padding: 24px 22px;
+    background: rgba(17,17,16,0.86);
+    border: 1px solid rgba(255,255,255,0.16);
+    backdrop-filter: blur(3px);
+  }
+
+  .service-visual-badge {
+    display: inline-block;
+    margin-bottom: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.72);
+  }
+
+  .service-visual-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    line-height: 0.95;
+    letter-spacing: 0.03em;
+    color: #fff;
+  }
+
+  .service-visual-list {
+    margin-top: 14px;
+    list-style: none;
+    display: grid;
+    gap: 8px;
+  }
+
+  .service-visual-list li {
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.84);
+  }
+
+  .service-block {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .service-adv-grid,
+  .service-scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .service-adv-card,
+  .service-scenario-card {
+    padding: 30px 26px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+    transition: background 0.22s;
+  }
+
+  .service-adv-card:nth-child(4n),
+  .service-scenario-card:nth-child(4n) {
+    border-right: none;
+  }
+
+  .service-adv-card:hover,
+  .service-scenario-card:hover {
+    background: var(--off);
+  }
+
+  .service-adv-title,
+  .service-scenario-title {
+    font-size: 15px;
+    line-height: 1.42;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .service-adv-text,
+  .service-scenario-text {
+    font-size: 13px;
+    line-height: 1.64;
+    color: var(--ink-mid);
+  }
+
+  .service-include-panel {
+    padding: 36px 48px 40px;
+  }
+
+  .service-include-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 22px;
+  }
+
+  .service-include-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    font-size: 14px;
+    line-height: 1.56;
+    color: var(--ink);
+  }
+
+  .service-check-mark {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border: 1px solid var(--orange);
+    position: relative;
+    margin-top: 1px;
+  }
+
+  .service-check-mark::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 7px;
+    height: 4px;
+    border-left: 1.5px solid var(--orange);
+    border-bottom: 1.5px solid var(--orange);
+    transform: rotate(-45deg);
+  }
+
+  .service-pricing-compact {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .service-pricing-body {
+    padding: 34px 48px 36px;
+    background: var(--off);
+  }
+
+  .service-pricing-lead {
+    max-width: 760px;
+    font-size: 16px;
+    line-height: 1.64;
+    color: var(--ink-mid);
+    margin-bottom: 24px;
+  }
+
+  .service-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .service-pricing-item {
+    background: var(--white);
+    padding: 22px 20px;
+  }
+
+  .service-pricing-item-title {
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .service-pricing-item-text {
+    font-size: 12px;
+    line-height: 1.58;
+    color: var(--ink-mid);
+  }
+
+  .service-pricing-note {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
   .service-breadcrumbs {
     display: flex;
     align-items: center;
@@ -365,6 +630,20 @@
     color: var(--ink-mid);
   }
 
+  .service-faq-compact .service-faq-item {
+    padding: 26px 24px;
+  }
+
+  .service-faq-compact .service-faq-question {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .service-faq-compact .service-faq-answer {
+    font-size: 13px;
+    line-height: 1.58;
+  }
+
   .service-link-item {
     display: block;
     text-decoration: none;
@@ -424,6 +703,10 @@
     .hero-right {
       display: block;
       border-top: 1px solid var(--border);
+    }
+    .service-hero-v2 .hero-right {
+      border-top: none;
+      padding: 18px;
     }
     .hero-left {
       border-right: none;
@@ -494,6 +777,70 @@
     footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
     .hero-stats-row { flex-wrap: wrap; }
     .ticker { display: none; }
+
+    .service-hero-subtitle {
+      max-width: 100%;
+      font-size: 16px;
+      margin-top: 14px;
+    }
+
+    .service-trust-list {
+      grid-template-columns: 1fr;
+      margin-top: 20px;
+    }
+
+    .service-visual {
+      min-height: 360px;
+    }
+
+    .service-visual img {
+      min-height: 360px;
+    }
+
+    .service-visual-card {
+      max-width: none;
+      right: 14px;
+      left: 14px;
+      width: auto;
+      padding: 18px 16px;
+    }
+
+    .service-visual-title {
+      font-size: 34px;
+    }
+
+    .service-adv-grid,
+    .service-scenarios-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .service-adv-card,
+    .service-scenario-card {
+      border-right: 1px solid var(--border);
+      padding: 24px 20px;
+    }
+
+    .service-adv-card:nth-child(2n),
+    .service-scenario-card:nth-child(2n) {
+      border-right: none;
+    }
+
+    .service-include-panel {
+      padding: 28px 20px 30px;
+    }
+
+    .service-include-list {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .service-pricing-body {
+      padding: 26px 20px;
+    }
+
+    .service-pricing-grid {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   @media (max-width: 480px) {
@@ -549,8 +896,46 @@
       max-width: 100%;
     }
 
+    .service-label-pill {
+      font-size: 10px;
+      padding: 7px 10px;
+    }
+
+    .service-hero-subtitle {
+      font-size: 15px;
+      line-height: 1.56;
+    }
+
+    .service-visual {
+      min-height: 300px;
+    }
+
+    .service-visual img {
+      min-height: 300px;
+    }
+
+    .service-visual-list {
+      gap: 6px;
+    }
+
     .service-hero .hero-desc {
       max-width: 100%;
+    }
+
+    .service-adv-grid,
+    .service-scenarios-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .service-adv-card,
+    .service-scenario-card,
+    .service-adv-card:nth-child(2n),
+    .service-scenario-card:nth-child(2n) {
+      border-right: none;
+    }
+
+    .service-pricing-grid {
+      grid-template-columns: 1fr;
     }
 
     .service-faq-grid {
