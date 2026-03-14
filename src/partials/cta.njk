@@ -1,10 +1,15 @@
+{%- set titleMain = ctaTitleMain or 'НУЖНЫ ГРУЗЧИКИ' -%}
+{%- set titleAccent = ctaTitleAccent or 'СЕГОДНЯ?' -%}
+{%- set subtitle = ctaSub or 'Выезд от 1 часа — звоните или оставьте заявку' -%}
+{%- set buttonLabel = ctaButtonLabel or 'Оставить заявку' -%}
+{%- set buttonHref = ctaButtonHref or '#contact' -%}
 <div class="cta-strip reveal">
   <div>
-    <h2 class="cta-title">НУЖНЫ ГРУЗЧИКИ <span>СЕГОДНЯ?</span></h2>
-    <p class="cta-sub">Выезд от 1 часа — звоните или оставьте заявку</p>
+    <h2 class="cta-title">{{ titleMain }} <span>{{ titleAccent }}</span></h2>
+    <p class="cta-sub">{{ subtitle }}</p>
   </div>
   <div class="cta-right">
-    <a href="tel:+79009529391" class="cta-phone-big">+7 900 952-93-91</a>
-    <a href="#contact" class="btn-orange">Оставить заявку</a>
+    <a href="tel:{{ site.phoneHref }}" class="cta-phone-big">{{ site.phoneDisplay }}</a>
+    <a href="{{ buttonHref }}" class="btn-orange">{{ buttonLabel }}</a>
   </div>
 </div>

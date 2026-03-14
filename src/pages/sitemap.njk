@@ -1,5 +1,6 @@
 ---
 permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
 ---
 {%- set hasPathPrefix = ('/' | url) != '/' -%}
 {%- set baseDomain = site.domain -%}
@@ -14,4 +15,12 @@ permalink: /sitemap.xml
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+{% for service in services.items %}
+  <url>
+    <loc>{{ baseDomain }}{{ service.canonicalPath | url }}</loc>
+    <lastmod>{{ site.lastmod }}</lastmod>
+    <changefreq>{{ service.sitemap.changefreq or 'weekly' }}</changefreq>
+    <priority>{{ service.sitemap.priority or '0.8' }}</priority>
+  </url>
+{% endfor %}
 </urlset>

@@ -1,0 +1,197 @@
+<section class="hero service-hero">
+  <div class="hero-left">
+    <div>
+      <div class="service-breadcrumbs reveal">
+        <a href="{{ '/' | url }}">Главная</a>
+        <span>/</span>
+        <span>{{ service.h1 }}</span>
+      </div>
+      <div class="hero-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <span class="eyebrow-text">{{ service.hero.eyebrow }}</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="hero-title-line">{{ service.h1 }}</span>
+      </h1>
+      <p class="service-offer">{{ service.hero.offer }}</p>
+      <p class="hero-desc">{{ service.hero.text }}</p>
+      <div class="hero-cta-row">
+        <a href="#contact" class="btn-main"><span>{{ service.hero.primaryCtaLabel }}</span></a>
+        <a href="{{ '/' | url }}" class="btn-outline">{{ service.hero.secondaryCtaLabel }}</a>
+      </div>
+    </div>
+    <div class="hero-stats-row">
+      {%- for stat in service.hero.stats -%}
+      <div class="hero-stat">
+        <div class="stat-big">{{ stat.value }}</div>
+        <div class="stat-sm">{{ stat.label }}</div>
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo">
+      <img src="{{ '/assets/img/hero.jpg' | url }}" alt="{{ service.h1 }}">
+    </div>
+    <div class="hero-right-bottom">
+      {%- for fact in service.hero.facts -%}
+      <div class="hri">
+        <div class="hri-label">{{ fact.label }}</div>
+        <div class="hri-val">{{ fact.value }}</div>
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<section class="seo-services" id="services" aria-labelledby="service-includes-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Что входит в услугу</div>
+      <h2 class="sec-title" id="service-includes-title">ДЕЛАЕМ РАБОТУ ПОД КЛЮЧ</h2>
+    </div>
+    <p class="sec-sub">Без лишних подрядчиков и без пробелов между этапами.</p>
+  </div>
+  <div class="seo-services-grid">
+    {%- for item in service.includes -%}
+    <div class="seo-service-item reveal rd{{ (loop.index0 % 3) + 1 }}">
+      <strong>{{ item.title }}</strong>
+      <span>{{ item.text }}</span>
+    </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="why service-when" aria-labelledby="service-when-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Когда это актуально</div>
+      <h2 class="sec-title" id="service-when-title">ТИПОВЫЕ СИТУАЦИИ</h2>
+    </div>
+    <p class="sec-sub">Форматы задач, с которыми к нам обращаются чаще всего.</p>
+  </div>
+  <div class="why-grid">
+    {%- for item in service.whenRelevant -%}
+    <div class="why-item reveal rd{{ (loop.index0 % 4) + 1 }}">
+      <div class="wi-num">0{{ loop.index }}</div>
+      <div class="wi-title">{{ item.title }}</div>
+      <p class="wi-text">{{ item.text }}</p>
+    </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="why" id="why" aria-labelledby="service-why-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Почему выбирают нас</div>
+      <h2 class="sec-title" id="service-why-title">РЕЗУЛЬТАТ БЕЗ СЮРПРИЗОВ</h2>
+    </div>
+    <p class="sec-sub">Понятные договоренности, аккуратная работа и реальная ответственность.</p>
+  </div>
+  <div class="why-grid">
+    {%- for item in service.whyChoose -%}
+    <div class="why-item reveal rd{{ (loop.index0 % 4) + 1 }}">
+      <div class="wi-num">0{{ loop.index }}</div>
+      <div class="wi-title">{{ item.title }}</div>
+      <p class="wi-text">{{ item.text }}</p>
+    </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="process" id="process" aria-labelledby="service-process-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Как мы работаем</div>
+      <h2 class="sec-title" id="service-process-title">ПРОЗРАЧНЫЙ ПРОЦЕСС</h2>
+    </div>
+    <p class="sec-sub">Каждый шаг согласован, поэтому вы понимаете результат заранее.</p>
+  </div>
+  <div class="process-grid">
+    {%- for step in service.processSteps -%}
+    <div class="process-step reveal rd{{ (loop.index0 % 4) + 1 }}">
+      <div class="ps-num">0{{ loop.index }}</div>
+      <div class="ps-title">{{ step.title }}</div>
+      <p class="ps-text">{{ step.text }}</p>
+    </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="seo-services service-pricing" aria-labelledby="service-pricing-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Стоимость</div>
+      <h2 class="sec-title" id="service-pricing-title">ОТ ЧЕГО ЗАВИСИТ ЦЕНА</h2>
+    </div>
+    <p class="sec-sub">Даем расчет по фактическим параметрам, а не по шаблонному тарифу.</p>
+  </div>
+  <div class="seo-copy reveal">
+    <p>{{ service.pricing.intro }}</p>
+  </div>
+  <div class="seo-services-grid">
+    {%- for factor in service.pricing.factors -%}
+    <div class="seo-service-item reveal rd{{ (loop.index0 % 3) + 1 }}">
+      <strong>{{ factor.title }}</strong>
+      <span>{{ factor.text }}</span>
+    </div>
+    {%- endfor -%}
+  </div>
+  <p class="geo-note reveal">{{ service.pricing.note }}</p>
+</section>
+
+<section class="service-faq" aria-labelledby="service-faq-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">FAQ</div>
+      <h2 class="sec-title" id="service-faq-title">ЧАСТЫЕ ВОПРОСЫ</h2>
+    </div>
+    <p class="sec-sub">Коротко отвечаем на то, что важно перед заказом.</p>
+  </div>
+  <div class="service-faq-grid">
+    {%- for item in service.faq -%}
+    <article class="service-faq-item reveal rd{{ (loop.index0 % 4) + 1 }}">
+      <h3 class="service-faq-question">{{ item.question }}</h3>
+      <p class="service-faq-answer">{{ item.answer }}</p>
+    </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="seo-services service-links" aria-labelledby="service-links-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Полезные ссылки</div>
+      <h2 class="sec-title" id="service-links-title">ПО ТЕМЕ ПЕРЕЕЗДА И ПЕРЕВОЗКИ</h2>
+    </div>
+    <p class="sec-sub">Переходите на смежные услуги и выбирайте нужный формат работы.</p>
+  </div>
+  <div class="seo-services-grid">
+    {%- for link in service.internalLinks -%}
+    <a href="{{ link.href | url }}" class="seo-service-item service-link-item reveal rd{{ (loop.index0 % 3) + 1 }}">
+      <strong>{{ link.label }}</strong>
+      <span>{{ link.description }}</span>
+    </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for item in service.faq -%}
+    {
+      "@type": "Question",
+      "name": {{ item.question | dump | safe }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.answer | dump | safe }}
+      }
+    }{% if not loop.last %},{% endif %}
+    {%- endfor -%}
+  ]
+}
+</script>

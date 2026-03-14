@@ -1,5 +1,5 @@
 <nav id="navbar">
-  <a href="#" class="nav-logo">ГРУЗ<span>Ъ</span></a>
+  <a href="{{ '/' | url }}" class="nav-logo">ГРУЗ<span>Ъ</span></a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Открыть меню">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -11,5 +11,5 @@
     <li><a href="#process">Как работаем</a></li>
     <li><a href="#contact">Контакты</a></li>
   </ul>
-  <a href="tel:+79009529391" class="nav-phone">+7 900 952-93-91</a>
+  <a href="tel:{{ site.phoneHref }}" class="nav-phone">{{ site.phoneDisplay }}</a>
 </nav>

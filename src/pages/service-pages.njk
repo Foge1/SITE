@@ -1,0 +1,29 @@
+---
+pagination:
+  data: services.items
+  size: 1
+  alias: service
+permalink: false
+eleventyComputed:
+  permalink: "/{{ service.slug }}/index.html"
+  title: "{{ service.title }}"
+  description: "{{ service.description }}"
+  canonicalPath: "{{ service.canonicalPath }}"
+---
+<!DOCTYPE html>
+<html lang="ru">
+{% include "head.njk" %}
+<body>
+{% include "header-nav.njk" %}
+{% include "service-page-content.njk" %}
+{% include "geo-coverage.njk" %}
+{% set ctaTitleMain = service.finalCta.titleMain %}
+{% set ctaTitleAccent = service.finalCta.titleAccent %}
+{% set ctaSub = service.finalCta.subtitle %}
+{% set ctaButtonLabel = service.finalCta.buttonLabel %}
+{% include "cta.njk" %}
+{% include "contact.njk" %}
+{% include "footer.njk" %}
+<script src="{{ '/assets/js/main.js' | url }}"></script>
+</body>
+</html>

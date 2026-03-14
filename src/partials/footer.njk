@@ -1,5 +1,5 @@
 <footer>
-  <a href="#" class="f-logo">ГРУЗ<span>Ъ</span></a>
+  <a href="{{ '/' | url }}" class="f-logo">ГРУЗ<span>Ъ</span></a>
   <span class="f-copy">© 2024 ГРУЗЪ — Переезды и перевозки по городу и области</span>
   <ul class="f-links">
     <li><a href="#">Конфиденциальность</a></li>
@@ -7,4 +7,4 @@
   </ul>
 </footer>
 
-<a href="tel:+79009529391" class="mobile-call-cta" aria-label="Позвонить по номеру +7 900 952-93-91">Позвонить</a>
+<a href="tel:{{ site.phoneHref }}" class="mobile-call-cta" aria-label="Позвонить по номеру {{ site.phoneDisplay }}">Позвонить</a>

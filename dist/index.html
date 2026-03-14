@@ -50,7 +50,7 @@
 
 <body>
 <nav id="navbar">
-  <a href="#" class="nav-logo">ГРУЗ<span>Ъ</span></a>
+  <a href="/" class="nav-logo">ГРУЗ<span>Ъ</span></a>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Открыть меню">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -326,45 +326,47 @@
       <div class="ci-row"><span class="ci-label">Работаем</span><span class="ci-val">Ежедневно 7:00 — 23:00</span></div>
       <div class="ci-row"><span class="ci-label">Район</span><span class="ci-val">По городу и пригородам до 100 км</span></div>
     </div>
-   <form action="/send.php" method="post" id="contact-form">
-  <div class="contact-form reveal rd2">
-    <div class="field-wrap">
-      <input type="text" name="name" placeholder="Ваше имя">
-    </div>
+    <form action="/send.php" method="post" id="contact-form">
+      <div class="contact-form reveal rd2">
+        <div class="field-wrap">
+          <input type="text" name="name" placeholder="Ваше имя">
+        </div>
 
-    <div class="field-wrap">
-      <input type="tel" name="phone" placeholder="Телефон для связи" required>
-    </div>
+        <div class="field-wrap">
+          <input type="tel" name="phone" placeholder="Телефон для связи" required>
+        </div>
 
-    <div class="field-wrap">
-      <select name="service" required>
-        <option value="" disabled selected>Что нужно сделать?</option>
-        <option>Помощь на час</option>
-        <option>Газель с бригадой</option>
-        <option>Квартирный переезд</option>
-        <option>Офисный переезд</option>
-        <option>Дача и пригород</option>
-        <option>Вывоз мусора / старой мебели</option>
-        <option>Другое</option>
-      </select>
-    </div>
+        <div class="field-wrap">
+          <select name="service" required>
+            <option value="" disabled selected>Что нужно сделать?</option>
+            <option>Помощь на час</option>
+            <option>Газель с бригадой</option>
+            <option>Квартирный переезд</option>
+            <option>Офисный переезд</option>
+            <option>Дача и пригород</option>
+            <option>Вывоз мусора / старой мебели</option>
+            <option>Другое</option>
+          </select>
+        </div>
 
-    <div class="field-wrap">
-      <input type="text" name="address" placeholder="Адрес (откуда)">
-    </div>
+        <div class="field-wrap">
+          <input type="text" name="address" placeholder="Адрес (откуда)">
+        </div>
 
-    <div class="field-wrap">
-      <textarea name="comment" rows="4" placeholder="Что везём, сколько этажей, есть ли лифт..."></textarea>
-    </div>
+        <div class="field-wrap">
+          <textarea name="comment" rows="4" placeholder="Что везём, сколько этажей, есть ли лифт..."></textarea>
+        </div>
 
-    <button class="submit-btn" type="submit">Отправить заявку</button>
-    <div class="form-message" id="form-message" aria-live="polite"></div>
+        <button class="submit-btn" type="submit">Отправить заявку</button>
+        <div class="form-message" id="form-message" aria-live="polite"></div>
+      </div>
+    </form>
   </div>
-</form>
+  </div>
 </section>
 
 <footer>
-  <a href="#" class="f-logo">ГРУЗ<span>Ъ</span></a>
+  <a href="/" class="f-logo">ГРУЗ<span>Ъ</span></a>
   <span class="f-copy">© 2024 ГРУЗЪ — Переезды и перевозки по городу и области</span>
   <ul class="f-links">
     <li><a href="#">Конфиденциальность</a></li>
