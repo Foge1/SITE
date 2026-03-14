@@ -1,0 +1,13 @@
+---
+permalink: /robots.txt
+---
+{%- set hasPathPrefix = ('/' | url) != '/' -%}
+{%- set baseDomain = site.domain -%}
+{%- if hasPathPrefix and site.githubPagesDomain -%}
+  {%- set baseDomain = site.githubPagesDomain -%}
+{%- endif -%}
+User-agent: *
+Allow: /
+
+Host: {{ baseDomain | replace('https://', '') | replace('http://', '') | replace('/', '') }}
+Sitemap: {{ baseDomain }}{{ '/sitemap.xml' | url }}

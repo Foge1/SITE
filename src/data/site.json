@@ -1,0 +1,23 @@
+{
+  "brandName": "ГРУЗЪ",
+  "siteName": "ГРУЗЪ",
+  "domain": "https://example.com",
+  "githubPagesDomain": "",
+  "phoneDisplay": "+7 900 952-93-91",
+  "phoneHref": "+79009529391",
+  "city": "Воронеж",
+  "region": "Воронежская область",
+  "workHours": "Ежедневно 7:00 — 23:00",
+  "serviceArea": "По городу и пригородам до 100 км",
+  "ogImage": "/assets/img/og-image.jpg",
+  "themeColor": "#d94f10",
+  "defaultTitle": "Грузчики в Воронеже и пригороде — цены, газель с грузчиками | ГРУЗЪ",
+  "defaultDescription": "Грузчики в Воронеже и пригороде: квартирный и офисный переезд, газель с грузчиками, перевозка мебели и вывоз мусора. Честные цены, быстрый выезд, своя бригада.",
+  "defaultCanonicalPath": "/",
+  "locale": "ru_RU",
+  "currency": "RUB",
+  "social": {
+    "telegram": "https://t.me/gruzvrn1"
+  },
+  "lastmod": "2026-03-14"
+}

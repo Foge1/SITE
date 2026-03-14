@@ -1,0 +1,68 @@
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{%- set hasPathPrefix = ('/' | url) != '/' -%}
+{%- set baseDomain = site.domain -%}
+{%- if hasPathPrefix and site.githubPagesDomain -%}
+  {%- set baseDomain = site.githubPagesDomain -%}
+{%- endif -%}
+{%- set seoTitle = title or site.defaultTitle -%}
+{%- set seoDescription = description or site.defaultDescription -%}
+{%- set seoCanonicalPath = canonicalPath or page.url or site.defaultCanonicalPath -%}
+{%- set seoCanonicalUrl = seoCanonicalPath -%}
+{%- if '://' not in seoCanonicalPath -%}
+  {%- set seoCanonicalUrl = baseDomain ~ (seoCanonicalPath | url) -%}
+{%- endif -%}
+{%- set seoOgImage = ogImage or site.ogImage -%}
+{%- set seoOgImageUrl = seoOgImage -%}
+{%- if '://' not in seoOgImage -%}
+  {%- set seoOgImageUrl = baseDomain ~ (seoOgImage | url) -%}
+{%- endif -%}
+{%- set seoRobots = 'index,follow' -%}
+{%- if noindex -%}
+  {%- set seoRobots = 'noindex,nofollow' -%}
+{%- endif %}
+<title>{{ seoTitle }}</title>
+<meta name="description" content="{{ seoDescription }}">
+<link rel="canonical" href="{{ seoCanonicalUrl }}">
+<meta name="robots" content="{{ seoRobots }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="{{ site.locale }}">
+<meta property="og:site_name" content="{{ site.siteName }}">
+<meta property="og:title" content="{{ seoTitle }}">
+<meta property="og:description" content="{{ seoDescription }}">
+<meta property="og:url" content="{{ seoCanonicalUrl }}">
+<meta property="og:image" content="{{ seoOgImageUrl }}">
+<meta property="og:image:alt" content="Грузчики и газель в Воронеже">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ seoTitle }}">
+<meta name="twitter:description" content="{{ seoDescription }}">
+<meta name="twitter:image" content="{{ seoOgImageUrl }}">
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/img/favicon.svg' | url }}">
+<link rel="icon" sizes="32x32" type="image/png" href="{{ '/assets/img/favicon-32x32.png' | url }}">
+<link rel="icon" sizes="16x16" type="image/png" href="{{ '/assets/img/favicon-16x16.png' | url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/apple-touch-icon.png' | url }}">
+<link rel="manifest" href="{{ '/manifest.webmanifest' | url }}">
+<meta name="theme-color" content="{{ site.themeColor }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ '/assets/css/critical.css' | url }}">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "{{ site.brandName }}",
+  "telephone": "{{ site.phoneDisplay }}",
+  "areaServed": [
+    "{{ site.city }}",
+    "{{ site.region }}"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "{{ site.city }}"
+  }
+}
+</script>
+</head>

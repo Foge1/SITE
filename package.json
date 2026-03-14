@@ -1,0 +1,15 @@
+{
+  "name": "gruz-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Статический сайт услуг грузчиков с 11ty-сборкой",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "cross-env ELEVENTY_PATH_PREFIX=/ eleventy",
+    "build:pages": "cross-env ELEVENTY_PATH_PREFIX=/SITE/ eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "cross-env": "^7.0.3"
+  }
+}
