@@ -1,8 +1,12 @@
 {%- set landing = service.landing -%}
 {%- set heroData = landing.hero -%}
-<section class="hero service-hero service-hero-v2">
+{%- set heroImageSrc = '/assets/img/hero.jpg' -%}
+{%- if service.slug == 'kvartirnyj-pereezd-voronezh' -%}
+  {%- set heroImageSrc = '/assets/img/kvartirnyj-pereezd.webp' -%}
+{%- endif -%}
+<section class="hero service-hero service-hero-v2 hero-grid">
   <div class="hero-left">
-    <div>
+    <div class="hero-text">
       <div class="service-breadcrumbs reveal">
         <a href="{{ '/' | url }}">Главная</a>
         <span>/</span>
@@ -29,7 +33,7 @@
   </div>
   <div class="hero-right">
     <div class="service-visual reveal rd2">
-      <img src="{{ '/assets/img/hero.jpg' | url }}" alt="{{ service.h1 }}">
+      <img src="{{ heroImageSrc | url }}" alt="{{ service.h1 }}">
       <div class="service-visual-card">
         <span class="service-visual-badge">{{ heroData.visualBadge }}</span>
         <h2 class="service-visual-title">{{ heroData.visualTitle }}</h2>

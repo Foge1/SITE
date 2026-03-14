@@ -255,6 +255,20 @@
     min-height: auto;
   }
 
+  .service-hero-v2.hero-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 64px;
+  }
+
+  .service-hero-v2.hero-grid .hero-left {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .service-hero-v2.hero-grid .hero-text {
+    max-width: 560px;
+  }
+
   .service-hero-v2 .hero-left {
     padding-bottom: 48px;
   }
@@ -265,8 +279,12 @@
   }
 
   .service-hero-v2 .hero-title {
-    max-width: 11ch;
+    max-width: 100%;
     margin-top: 16px;
+  }
+
+  .service-hero-v2 .hero-title-line {
+    white-space: normal;
   }
 
   .service-label-pill {
