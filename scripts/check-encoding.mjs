@@ -5,6 +5,8 @@ import path from "node:path";
 const VALID_SCOPES = new Set(["source", "dist", "all"]);
 const argScope = process.argv.find((arg) => arg.startsWith("--scope="));
 const scope = argScope ? argScope.split("=")[1] : "source";
+const argDistRoot = process.argv.find((arg) => arg.startsWith("--dist-root="));
+const distRoot = (argDistRoot ? argDistRoot.split("=")[1] : "dist").trim() || "dist";
 
 if (!VALID_SCOPES.has(scope)) {
   console.error(`[encoding-check] Unknown scope "${scope}". Use source|dist|all.`);
@@ -20,7 +22,7 @@ const SOURCE_ROOTS = [
   "package-lock.json",
   "README.md"
 ];
-const DIST_ROOTS = ["dist"];
+const DIST_ROOTS = [distRoot];
 const SKIP_DIRS = new Set(["node_modules", ".git"]);
 const TEXT_EXTENSIONS = new Set([
   ".njk",
@@ -128,8 +130,8 @@ for (const root of scanRoots) {
   collectTextFilesFrom(root, files);
 }
 
-if ((scope === "dist" || scope === "all") && !fs.existsSync("dist")) {
-  console.error("[encoding-check] dist directory is missing.");
+if ((scope === "dist" || scope === "all") && !fs.existsSync(distRoot)) {
+  console.error(`[encoding-check] ${distRoot} directory is missing.`);
   process.exit(1);
 }
 
@@ -167,7 +169,14 @@ for (const file of files) {
 }
 
 if (issues.length === 0) {
-  console.log(`[encoding-check] OK: scanned ${files.length} text files (${scope}).`);
+  let scopeLabel = scope;
+  if (scope === "dist") {
+    scopeLabel = `dist:${distRoot}`;
+  } else if (scope === "all") {
+    scopeLabel = `all (dist:${distRoot})`;
+  }
+
+  console.log(`[encoding-check] OK: scanned ${files.length} text files (${scopeLabel}).`);
   process.exit(0);
 }
 

@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "eleventy --serve",
     "check:encoding": "node scripts/check-encoding.mjs --scope=source",
-    "check:dist": "node scripts/check-encoding.mjs --scope=dist",
-    "build": "npm run check:encoding && cross-env ELEVENTY_PATH_PREFIX=/ eleventy && npm run check:dist",
-    "build:pages": "npm run check:encoding && cross-env ELEVENTY_PATH_PREFIX=/SITE/ eleventy && npm run check:dist"
+    "check:dist": "node scripts/check-encoding.mjs --scope=dist --dist-root=dist",
+    "check:dist:pages": "node scripts/check-encoding.mjs --scope=dist --dist-root=dist-pages",
+    "build": "npm run check:encoding && cross-env ELEVENTY_PATH_PREFIX=/ ELEVENTY_OUTPUT_DIR=dist eleventy && npm run check:dist",
+    "build:pages": "npm run check:encoding && cross-env ELEVENTY_PATH_PREFIX=/SITE/ ELEVENTY_OUTPUT_DIR=dist-pages eleventy && npm run check:dist:pages"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",

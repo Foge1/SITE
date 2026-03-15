@@ -9,10 +9,17 @@ const normalizePathPrefix = (value) => {
   return `/${withoutSlashes}/`;
 };
 
+const normalizeOutputDir = (value) => {
+  const trimmed = (value || "dist").trim();
+  const normalized = trimmed.replace(/^[\\/]+|[\\/]+$/g, "");
+  return normalized || "dist";
+};
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
 
   const pathPrefix = normalizePathPrefix(process.env.ELEVENTY_PATH_PREFIX || "/");
+  const outputDir = normalizeOutputDir(process.env.ELEVENTY_OUTPUT_DIR || "dist");
 
   return {
     pathPrefix,
@@ -20,7 +27,7 @@ module.exports = function (eleventyConfig) {
       input: "src",
       includes: "partials",
       data: "data",
-      output: "dist"
+      output: outputDir
     },
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk"

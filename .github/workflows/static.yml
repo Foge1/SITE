@@ -35,13 +35,13 @@ jobs:
         run: npm run build:pages
 
       - name: Add .nojekyll
-        run: New-Item dist/.nojekyll -ItemType File -Force
+        run: New-Item dist-pages/.nojekyll -ItemType File -Force
         shell: powershell
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./dist-pages
 
   deploy:
     needs: build

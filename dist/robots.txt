@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 Host: example.com
-Sitemap: https://example.com/SITE/sitemap.xml
+Sitemap: https://example.com/sitemap.xml
