@@ -165,16 +165,19 @@ const navbar = document.getElementById('navbar');
 
   if (calcFab && calcOverlay) {
     const calcClose = document.getElementById('calc-close');
-    const calcModal = document.getElementById('calc-modal');
     const calcServiceEl = document.getElementById('calc-service');
     const calcVolumeEl = document.getElementById('calc-volume');
     const calcVolumeField = document.getElementById('calc-volume-field');
     const calcVolumeLabel = document.getElementById('calc-volume-label');
+    const calcDistanceField = document.getElementById('calc-distance-field');
+    const calcDistanceEl = document.getElementById('calc-distance');
+    const calcMoversField = document.getElementById('calc-movers-field');
+    const calcMoversEl = document.getElementById('calc-movers');
+    const calcPeopleField = document.getElementById('calc-people-field');
+    const calcPeopleEl = document.getElementById('calc-people');
     const calcFloorRow = document.getElementById('calc-floor-row');
     const calcFloorEl = document.getElementById('calc-floor');
     const calcElevatorEl = document.getElementById('calc-elevator');
-    const calcDistanceField = document.getElementById('calc-distance-field');
-    const calcDistanceEl = document.getElementById('calc-distance');
     const calcSubmitBtn = document.getElementById('calc-submit');
     const calcResultEl = document.getElementById('calc-result');
     const calcResultPrice = document.getElementById('calc-result-price');
@@ -189,8 +192,8 @@ const navbar = document.getElementById('navbar');
       ],
       office: [
         { value: '5', text: 'До 5 рабочих мест' },
-        { value: '15', text: '5–15 рабочих мест' },
-        { value: '30', text: '15–30 рабочих мест' },
+        { value: '15', text: '5\u201315 рабочих мест' },
+        { value: '30', text: '15\u201330 рабочих мест' },
         { value: '50', text: '30+ рабочих мест' }
       ],
       gazelle: [
@@ -199,10 +202,8 @@ const navbar = document.getElementById('navbar');
         { value: 'full', text: 'Полный кузов' }
       ],
       trash: [
-        { value: '2', text: 'До 2 м³' },
-        { value: '5', text: '2–5 м³' },
-        { value: '10', text: '5–10 м³' },
-        { value: '15', text: '10+ м³' }
+        { value: 'gazelle', text: 'Газель \u2014 от 6 000 \u20BD' },
+        { value: 'kamaz', text: 'КамАЗ \u2014 от 9 000 \u20BD' }
       ]
     };
 
@@ -210,7 +211,7 @@ const navbar = document.getElementById('navbar');
       apartment: 'Сколько комнат?',
       office: 'Рабочих мест',
       gazelle: 'Объём загрузки',
-      trash: 'Объём мусора'
+      trash: 'Какая машина?'
     };
 
     let calculated = false;
@@ -247,11 +248,19 @@ const navbar = document.getElementById('navbar');
       });
     }
 
+    const toggleMoversDetails = () => {
+      const need = calcMoversEl.value === 'yes';
+      calcPeopleField.hidden = !need;
+      calcFloorRow.hidden = !need;
+    };
+
     const showFields = svc => {
       if (!svc) {
         calcVolumeField.hidden = true;
-        calcFloorRow.hidden = true;
         calcDistanceField.hidden = true;
+        calcMoversField.hidden = true;
+        calcPeopleField.hidden = true;
+        calcFloorRow.hidden = true;
         calcSubmitBtn.disabled = true;
         calcResultEl.hidden = true;
         calculated = false;
@@ -268,8 +277,11 @@ const navbar = document.getElementById('navbar');
 
       calcVolumeLabel.textContent = volumeLabels[svc];
       calcVolumeField.hidden = false;
-      calcFloorRow.hidden = false;
       calcDistanceField.hidden = !(svc === 'apartment' || svc === 'office');
+      calcMoversField.hidden = false;
+      calcMoversEl.value = 'no';
+      calcPeopleField.hidden = true;
+      calcFloorRow.hidden = true;
       calcSubmitBtn.disabled = false;
       calcResultEl.hidden = true;
       calculated = false;
@@ -280,45 +292,54 @@ const navbar = document.getElementById('navbar');
       if (!svc) return;
 
       const vol = calcVolumeEl.value;
+      const dist = calcDistanceEl.value;
+      const needMovers = calcMoversEl.value === 'yes';
+      const people = parseInt(calcPeopleEl.value, 10);
       const floor = parseInt(calcFloorEl.value, 10);
       const noElevator = calcElevatorEl.value === 'no';
-      const dist = calcDistanceEl.value;
 
-      let base = 0;
+      let transport = 0;
 
       if (svc === 'apartment') {
-        base = { 1: 5000, 2: 9000, 3: 15000, 4: 22000 }[vol] || 5000;
+        transport = { 1: 5000, 2: 9000, 3: 15000, 4: 22000 }[vol] || 5000;
       } else if (svc === 'office') {
-        base = { 5: 10000, 15: 22000, 30: 40000, 50: 60000 }[vol] || 10000;
+        transport = { 5: 10000, 15: 22000, 30: 40000, 50: 60000 }[vol] || 10000;
       } else if (svc === 'gazelle') {
-        base = { small: 3500, medium: 5500, full: 7500 }[vol] || 3500;
+        transport = { small: 3500, medium: 5500, full: 7500 }[vol] || 3500;
       } else if (svc === 'trash') {
-        base = { 2: 3500, 5: 6000, 10: 10000, 15: 16000 }[vol] || 3500;
-      }
-
-      if (floor > 1 && noElevator) {
-        const perFloor = svc === 'office' ? 800 : svc === 'gazelle' ? 400 : 500;
-        const floorExtra = (floor - 1) * perFloor;
-        base += svc === 'apartment' ? floorExtra * 2 : floorExtra;
+        transport = { gazelle: 6000, kamaz: 9000 }[vol] || 6000;
       }
 
       if (svc === 'apartment' || svc === 'office') {
         const mult = { near: 1, mid: 1.15, far: 1.3 }[dist] || 1;
-        base = Math.round(base * mult);
+        transport = Math.round(transport * mult);
       }
 
-      const low = Math.round(base * 0.85 / 500) * 500;
-      const high = Math.round(base * 1.15 / 500) * 500;
+      let movers = 0;
+      if (needMovers) {
+        movers = people * 1400;
+        if (noElevator && floor > 1) {
+          movers += people * (floor - 1) * 150;
+        }
+      }
 
-      calcResultPrice.textContent = low.toLocaleString('ru-RU') + ' \u2013 ' + high.toLocaleString('ru-RU') + ' \u20BD';
+      const total = transport + movers;
+      const low = Math.round(total * 0.9 / 500) * 500;
+      const high = Math.round(total * 1.1 / 500) * 500;
+
+      calcResultPrice.textContent = 'от ' + low.toLocaleString('ru-RU') + ' \u20BD';
       calcResultEl.hidden = false;
       calculated = true;
     };
 
     calcServiceEl.addEventListener('change', () => showFields(calcServiceEl.value));
+    calcMoversEl.addEventListener('change', () => {
+      toggleMoversDetails();
+      if (calculated) calculate();
+    });
     calcSubmitBtn.addEventListener('click', calculate);
 
-    [calcVolumeEl, calcFloorEl, calcElevatorEl, calcDistanceEl].forEach(el => {
+    [calcVolumeEl, calcFloorEl, calcElevatorEl, calcDistanceEl, calcPeopleEl].forEach(el => {
       el.addEventListener('change', () => { if (calculated) calculate(); });
     });
   }
