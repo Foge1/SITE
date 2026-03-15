@@ -197,9 +197,9 @@ const navbar = document.getElementById('navbar');
         { value: '50', text: '30+ рабочих мест' }
       ],
       gazelle: [
-        { value: 'small', text: 'До 1/3 кузова' },
-        { value: 'medium', text: 'До 2/3 кузова' },
-        { value: 'full', text: 'Полный кузов' }
+        { value: '3', text: '3 м' },
+        { value: '4', text: '4 м' },
+        { value: '6', text: '6 м' }
       ],
       trash: [
         { value: 'gazelle', text: 'Газель' },
@@ -210,7 +210,7 @@ const navbar = document.getElementById('navbar');
     const volumeLabels = {
       apartment: 'Сколько комнат?',
       office: 'Рабочих мест',
-      gazelle: 'Объём загрузки',
+      gazelle: 'Длина кузова',
       trash: 'Какая машина?'
     };
 
@@ -305,7 +305,7 @@ const navbar = document.getElementById('navbar');
       } else if (svc === 'office') {
         transport = { 5: 10000, 15: 22000, 30: 40000, 50: 60000 }[vol] || 10000;
       } else if (svc === 'gazelle') {
-        transport = { small: 3500, medium: 5500, full: 7500 }[vol] || 3500;
+        transport = { 3: 2400, 4: 2700, 6: 3800 }[vol] || 2400;
       } else if (svc === 'trash') {
         transport = { gazelle: 6000, kamaz: 9000 }[vol] || 6000;
       }
