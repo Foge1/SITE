@@ -143,6 +143,30 @@
 {% include "service-context-links.njk" %}
 {% include "related-services.njk" %}
 
+{%- set hasPathPrefix = ('/' | url) != '/' -%}
+{%- set breadcrumbDomain = site.domain -%}
+{%- if hasPathPrefix and site.githubPagesDomain -%}
+  {%- set breadcrumbDomain = site.githubPagesDomain -%}
+{%- endif -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "{{ breadcrumbDomain }}{{ '/' | url }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": {{ service.shortName | dump | safe }}
+    }
+  ]
+}
+</script>
 {%- if landing.faq and landing.faq.length -%}
 <script type="application/ld+json">
 {

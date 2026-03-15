@@ -36,7 +36,7 @@
   <div class="service-hero-right">
     <div class="service-hero-visual reveal rd2{% if not heroImageSrc %} service-hero-visual--fallback{% endif %}">
       {%- if heroImageSrc -%}
-      <img class="service-hero-visual-image" src="{{ heroImageSrc | url }}" alt="{{ heroImageAlt }}">
+      <img class="service-hero-visual-image" src="{{ heroImageSrc | url }}" alt="{{ heroImageAlt }}" width="1536" height="1024">
       {%- else -%}
       <div class="service-hero-visual-fallback" role="img" aria-label="{{ heroImageAlt }}">
         <div class="service-hero-visual-fallback-inner">
@@ -98,7 +98,7 @@
   </div>
   <div class="service-hero-right">
     <div class="service-hero-media">
-      <img class="service-hero-media-image" src="{{ '/assets/img/hero.jpg' | url }}" alt="{{ service.h1 }}">
+      <img class="service-hero-media-image" src="{{ '/assets/img/hero.jpg' | url }}" alt="{{ service.h1 }}" width="1024" height="1024">
     </div>
     <div class="service-hero-facts">
       {%- for fact in service.hero.facts -%}
