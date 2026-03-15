@@ -1,15 +1,31 @@
 {%- set landing = service.landing -%}
 {%- set serviceHeroVariant = 'golden' -%}
+{%- set sectionsMeta = landing.sections or {} -%}
+{%- set sectionOrder = landing.sectionOrder or ['advantages', 'includes', 'scenarios', 'process', 'pricing', 'faq'] -%}
+{%- set linkItems = landing.internalLinks or service.internalLinks -%}
 {% include "service-hero.njk" %}
 
-<section class="service-block" id="why" aria-labelledby="service-adv-title">
+{% macro renderSectionHead(meta, defaultLabel, defaultTitle, defaultSubtitle, titleId) -%}
+  {%- set head = meta or {} -%}
   <div class="sec-head reveal">
     <div>
-      <div class="sec-label">Ключевые преимущества</div>
-      <h2 class="sec-title" id="service-adv-title">ЗА ЧТО НАС ВЫБИРАЮТ</h2>
+      <div class="sec-label">{{ head.label or defaultLabel }}</div>
+      <h2 class="sec-title" id="{{ titleId }}">{{ head.title or defaultTitle }}</h2>
     </div>
-    <p class="sec-sub">Коротко о том, что важно для спокойного переезда.</p>
+    <p class="sec-sub">{{ head.subtitle or defaultSubtitle }}</p>
   </div>
+{%- endmacro %}
+
+{%- for section in sectionOrder -%}
+  {%- if section == 'advantages' and landing.advantages and landing.advantages.length -%}
+<section class="service-block" id="why" aria-labelledby="service-adv-title">
+  {{ renderSectionHead(
+    sectionsMeta.advantages,
+    'Ключевые преимущества',
+    'ЗА ЧТО НАС ВЫБИРАЮТ',
+    'Коротко о том, что важно для спокойного переезда.',
+    'service-adv-title'
+  ) }}
   <div class="service-adv-grid">
     {%- for item in landing.advantages -%}
     <article class="service-adv-card reveal rd{{ (loop.index0 % 4) + 1 }}">
@@ -19,15 +35,15 @@
     {%- endfor -%}
   </div>
 </section>
-
+  {%- elif section == 'includes' and landing.includes and landing.includes.length -%}
 <section class="service-block" id="services" aria-labelledby="service-includes-title">
-  <div class="sec-head reveal">
-    <div>
-      <div class="sec-label">Что входит в услугу</div>
-      <h2 class="sec-title" id="service-includes-title">ПОД КЛЮЧ ОТ СТАРТА ДО ФИНИША</h2>
-    </div>
-    <p class="sec-sub">Четкий набор работ без «додумываний» по ходу.</p>
-  </div>
+  {{ renderSectionHead(
+    sectionsMeta.includes,
+    'Что входит в услугу',
+    'ПОД КЛЮЧ ОТ СТАРТА ДО ФИНИША',
+    'Четкий набор работ без «додумываний» по ходу.',
+    'service-includes-title'
+  ) }}
   <div class="service-include-panel reveal">
     <ul class="service-include-list">
       {%- for item in landing.includes -%}
@@ -39,15 +55,15 @@
     </ul>
   </div>
 </section>
-
+  {%- elif section == 'scenarios' and landing.scenarios and landing.scenarios.length -%}
 <section class="service-block" aria-labelledby="service-scenarios-title">
-  <div class="sec-head reveal">
-    <div>
-      <div class="sec-label">Когда услуга подходит</div>
-      <h2 class="sec-title" id="service-scenarios-title">ТИПОВЫЕ СЦЕНАРИИ</h2>
-    </div>
-    <p class="sec-sub">Ситуации, где важны скорость, аккуратность и прогнозируемость.</p>
-  </div>
+  {{ renderSectionHead(
+    sectionsMeta.scenarios,
+    'Когда услуга подходит',
+    'ТИПОВЫЕ СЦЕНАРИИ',
+    'Ситуации, где важны скорость, аккуратность и прогнозируемость.',
+    'service-scenarios-title'
+  ) }}
   <div class="service-scenarios-grid">
     {%- for item in landing.scenarios -%}
     <article class="service-scenario-card reveal rd{{ (loop.index0 % 4) + 1 }}">
@@ -57,15 +73,15 @@
     {%- endfor -%}
   </div>
 </section>
-
+  {%- elif section == 'process' and landing.steps and landing.steps.length -%}
 <section class="process" id="process" aria-labelledby="service-process-title">
-  <div class="sec-head reveal">
-    <div>
-      <div class="sec-label">Как мы работаем</div>
-      <h2 class="sec-title" id="service-process-title">ПРОСТОЙ ПОНЯТНЫЙ ПРОЦЕСС</h2>
-    </div>
-    <p class="sec-sub">Четыре шага от звонка до завершенного переезда.</p>
-  </div>
+  {{ renderSectionHead(
+    sectionsMeta.process,
+    'Как мы работаем',
+    'ПРОСТОЙ ПОНЯТНЫЙ ПРОЦЕСС',
+    'Четыре шага от звонка до завершенного переезда.',
+    'service-process-title'
+  ) }}
   <div class="process-grid">
     {%- for step in landing.steps -%}
     <div class="process-step reveal rd{{ (loop.index0 % 4) + 1 }}">
@@ -76,15 +92,15 @@
     {%- endfor -%}
   </div>
 </section>
-
+  {%- elif section == 'pricing' and landing.pricing and landing.pricing.factors and landing.pricing.factors.length -%}
 <section class="service-pricing-compact" aria-labelledby="service-pricing-title">
-  <div class="sec-head reveal">
-    <div>
-      <div class="sec-label">Стоимость</div>
-      <h2 class="sec-title" id="service-pricing-title">ОТ ЧЕГО ЗАВИСИТ РАСЧЕТ</h2>
-    </div>
-    <p class="sec-sub">Только реальные параметры, без выдуманных тарифов.</p>
-  </div>
+  {{ renderSectionHead(
+    sectionsMeta.pricing,
+    'Стоимость',
+    'ОТ ЧЕГО ЗАВИСИТ РАСЧЕТ',
+    'Только реальные параметры, без выдуманных тарифов.',
+    'service-pricing-title'
+  ) }}
   <div class="service-pricing-body reveal">
     <p class="service-pricing-lead">{{ landing.pricing.lead }}</p>
     <div class="service-pricing-grid">
@@ -95,18 +111,20 @@
       </article>
       {%- endfor -%}
     </div>
+    {%- if landing.pricing.note -%}
     <p class="service-pricing-note">{{ landing.pricing.note }}</p>
+    {%- endif -%}
   </div>
 </section>
-
+  {%- elif section == 'faq' and landing.faq and landing.faq.length -%}
 <section class="service-faq service-faq-compact" aria-labelledby="service-faq-title">
-  <div class="sec-head reveal">
-    <div>
-      <div class="sec-label">FAQ</div>
-      <h2 class="sec-title" id="service-faq-title">КОРОТКИЕ ОТВЕТЫ ПО ДЕЛУ</h2>
-    </div>
-    <p class="sec-sub">То, что обычно спрашивают перед оформлением заявки.</p>
-  </div>
+  {{ renderSectionHead(
+    sectionsMeta.faq,
+    'FAQ',
+    'КОРОТКИЕ ОТВЕТЫ ПО ДЕЛУ',
+    'То, что обычно спрашивают перед оформлением заявки.',
+    'service-faq-title'
+  ) }}
   <div class="service-faq-grid">
     {%- for item in landing.faq -%}
     <article class="service-faq-item reveal rd{{ (loop.index0 % 4) + 1 }}">
@@ -116,7 +134,30 @@
     {%- endfor -%}
   </div>
 </section>
+  {%- elif section == 'links' and linkItems and linkItems.length -%}
+<section class="seo-services service-links" aria-labelledby="service-links-title">
+  {{ renderSectionHead(
+    sectionsMeta.links,
+    'Полезные ссылки',
+    'ПО ТЕМЕ ПЕРЕЕЗДА И ПЕРЕВОЗКИ',
+    'Переходите на смежные услуги и выбирайте нужный формат работы.',
+    'service-links-title'
+  ) }}
+  <div class="seo-services-grid">
+    {%- for link in linkItems -%}
+    <a href="{{ link.href | url }}" class="seo-service-item service-link-item reveal rd{{ (loop.index0 % 3) + 1 }}">
+      <strong>{{ link.label }}</strong>
+      <span>{{ link.description }}</span>
+    </a>
+    {%- endfor -%}
+  </div>
+</section>
+  {%- elif section == 'geo' -%}
+{% include "geo-coverage.njk" %}
+  {%- endif -%}
+{%- endfor -%}
 
+{%- if landing.faq and landing.faq.length -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -135,3 +176,4 @@
   ]
 }
 </script>
+{%- endif -%}

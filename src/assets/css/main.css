@@ -583,6 +583,81 @@
     filter: saturate(0.84);
   }
 
+  .service-hero-visual--fallback {
+    background: linear-gradient(150deg, #1c1b1a 0%, #262423 52%, #181716 100%);
+  }
+
+  .service-hero-visual-fallback {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 30px 26px;
+    background:
+      radial-gradient(62% 58% at 16% 22%, rgba(217, 79, 16, 0.3) 0%, rgba(217, 79, 16, 0) 70%),
+      radial-gradient(56% 48% at 84% 30%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 78%);
+  }
+
+  .service-hero-visual-fallback::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(115deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 42%),
+      repeating-linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.09) 0,
+        rgba(255, 255, 255, 0.09) 1px,
+        transparent 1px,
+        transparent 18px
+      );
+    pointer-events: none;
+  }
+
+  .service-hero-visual-fallback-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 430px;
+  }
+
+  .service-hero-visual-fallback-kicker {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.74);
+    margin-bottom: 12px;
+  }
+
+  .service-hero-visual-fallback-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 4vw, 52px);
+    line-height: 0.94;
+    letter-spacing: 0.03em;
+    color: #fff;
+    text-wrap: balance;
+  }
+
+  .service-hero-visual-fallback-pills {
+    margin-top: 16px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .service-hero-visual-fallback-pills li {
+    padding: 7px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(17, 17, 16, 0.3);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
   .service-hero-visual-card {
     position: absolute;
     right: 18px;
@@ -992,6 +1067,14 @@
       min-height: 360px;
     }
 
+    .service-hero-visual-fallback {
+      padding: 20px 16px;
+    }
+
+    .service-hero-visual-fallback-title {
+      font-size: 34px;
+    }
+
     .service-hero-visual-card {
       max-width: none;
       right: 14px;
@@ -1109,6 +1192,15 @@
 
     .service-hero-visual-image {
       min-height: 300px;
+    }
+
+    .service-hero-visual-fallback-title {
+      font-size: 30px;
+    }
+
+    .service-hero-visual-fallback-pills li {
+      font-size: 10px;
+      padding: 6px 8px;
     }
 
     .service-hero-visual-list {

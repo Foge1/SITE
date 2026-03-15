@@ -1,10 +1,11 @@
 {%- set serviceHeroVariant = serviceHeroVariant or 'default' -%}
 {%- if serviceHeroVariant == 'golden' -%}
   {%- set heroData = service.landing.hero -%}
-  {%- set heroImageSrc = '/assets/img/hero.jpg' -%}
-  {%- if service.slug == 'kvartirnyj-pereezd-voronezh' -%}
-    {%- set heroImageSrc = '/assets/img/kvartirnyj-pereezd.webp' -%}
-  {%- endif -%}
+  {%- set heroImage = heroData.image or {} -%}
+  {%- set heroImageSrc = heroImage.src or '' -%}
+  {%- set heroImageAlt = heroImage.alt or service.h1 -%}
+  {%- set fallbackVisual = heroData.fallbackVisual or {} -%}
+  {%- set fallbackPills = fallbackVisual.pills or [] -%}
 <section class="service-hero service-hero--golden">
   <div class="service-hero-left">
     <div class="service-hero-text">
@@ -33,8 +34,24 @@
     </div>
   </div>
   <div class="service-hero-right">
-    <div class="service-hero-visual reveal rd2">
-      <img class="service-hero-visual-image" src="{{ heroImageSrc | url }}" alt="{{ service.h1 }}">
+    <div class="service-hero-visual reveal rd2{% if not heroImageSrc %} service-hero-visual--fallback{% endif %}">
+      {%- if heroImageSrc -%}
+      <img class="service-hero-visual-image" src="{{ heroImageSrc | url }}" alt="{{ heroImageAlt }}">
+      {%- else -%}
+      <div class="service-hero-visual-fallback" role="img" aria-label="{{ heroImageAlt }}">
+        <div class="service-hero-visual-fallback-inner">
+          <span class="service-hero-visual-fallback-kicker">{{ fallbackVisual.kicker or heroData.label }}</span>
+          <h2 class="service-hero-visual-fallback-title">{{ fallbackVisual.title or heroData.visualTitle }}</h2>
+          {%- if fallbackPills.length -%}
+          <ul class="service-hero-visual-fallback-pills">
+            {%- for pill in fallbackPills -%}
+            <li>{{ pill }}</li>
+            {%- endfor -%}
+          </ul>
+          {%- endif -%}
+        </div>
+      </div>
+      {%- endif -%}
       <div class="service-hero-visual-card">
         <span class="service-hero-visual-badge">{{ heroData.visualBadge }}</span>
         <h2 class="service-hero-visual-title">{{ heroData.visualTitle }}</h2>
