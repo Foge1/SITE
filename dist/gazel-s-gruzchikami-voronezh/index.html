@@ -456,6 +456,85 @@
 
 <a href="tel:+79009529391" class="mobile-call-cta" aria-label="Позвонить по номеру +7 900 952-93-91">Позвонить</a>
 
+<button class="calc-fab" id="calc-fab" type="button" aria-label="Расчёт стоимости">
+  <svg class="calc-fab-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>
+  <span class="calc-fab-text">Расчёт</span>
+</button>
+
+<div class="calc-overlay" id="calc-overlay" aria-hidden="true">
+  <div class="calc-modal" id="calc-modal" role="dialog" aria-modal="true" aria-labelledby="calc-title">
+    <div class="calc-header">
+      <div>
+        <div class="calc-eyebrow">Онлайн-калькулятор</div>
+        <h3 class="calc-title" id="calc-title">Расчёт стоимости</h3>
+      </div>
+      <button class="calc-close" id="calc-close" type="button" aria-label="Закрыть калькулятор">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="calc-body" id="calc-body">
+      <div class="calc-field">
+        <label class="calc-label" for="calc-service">Что нужно сделать?</label>
+        <select id="calc-service" class="calc-select">
+          <option value="">Выберите услугу</option>
+          <option value="apartment">Квартирный переезд</option>
+          <option value="office">Офисный переезд</option>
+          <option value="gazelle">Газель с грузчиками</option>
+          <option value="trash">Вывоз мусора</option>
+        </select>
+      </div>
+
+      <div class="calc-field" id="calc-volume-field" hidden>
+        <label class="calc-label" id="calc-volume-label" for="calc-volume">Объём</label>
+        <select id="calc-volume" class="calc-select"></select>
+      </div>
+
+      <div class="calc-row" id="calc-floor-row" hidden>
+        <div class="calc-field calc-field--half">
+          <label class="calc-label" for="calc-floor">Этаж</label>
+          <select id="calc-floor" class="calc-select">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="7">6–9</option>
+            <option value="12">10+</option>
+          </select>
+        </div>
+        <div class="calc-field calc-field--half">
+          <label class="calc-label" for="calc-elevator">Лифт</label>
+          <select id="calc-elevator" class="calc-select">
+            <option value="yes">Есть</option>
+            <option value="no">Нет</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="calc-field" id="calc-distance-field" hidden>
+        <label class="calc-label" for="calc-distance">Расстояние</label>
+        <select id="calc-distance" class="calc-select">
+          <option value="near">До 10 км</option>
+          <option value="mid">10–25 км</option>
+          <option value="far">25+ км</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="calc-result" id="calc-result" hidden>
+      <div class="calc-result-label">Предварительная оценка</div>
+      <div class="calc-result-price" id="calc-result-price"></div>
+      <div class="calc-result-note">Точную цену назовём после уточнения деталей</div>
+    </div>
+
+    <div class="calc-footer">
+      <button class="calc-btn" id="calc-submit" type="button" disabled>Рассчитать</button>
+      <a class="calc-cta-link" href="#contact">Или оставьте заявку</a>
+    </div>
+  </div>
+</div>
+
 <script src="/assets/js/main.js"></script>
 </body>
 </html>

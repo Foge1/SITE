@@ -157,3 +157,168 @@ const navbar = document.getElementById('navbar');
       }
     });
   }
+
+  /* ── Price Calculator ── */
+
+  const calcFab = document.getElementById('calc-fab');
+  const calcOverlay = document.getElementById('calc-overlay');
+
+  if (calcFab && calcOverlay) {
+    const calcClose = document.getElementById('calc-close');
+    const calcModal = document.getElementById('calc-modal');
+    const calcServiceEl = document.getElementById('calc-service');
+    const calcVolumeEl = document.getElementById('calc-volume');
+    const calcVolumeField = document.getElementById('calc-volume-field');
+    const calcVolumeLabel = document.getElementById('calc-volume-label');
+    const calcFloorRow = document.getElementById('calc-floor-row');
+    const calcFloorEl = document.getElementById('calc-floor');
+    const calcElevatorEl = document.getElementById('calc-elevator');
+    const calcDistanceField = document.getElementById('calc-distance-field');
+    const calcDistanceEl = document.getElementById('calc-distance');
+    const calcSubmitBtn = document.getElementById('calc-submit');
+    const calcResultEl = document.getElementById('calc-result');
+    const calcResultPrice = document.getElementById('calc-result-price');
+    const calcCtaLink = calcOverlay.querySelector('.calc-cta-link');
+
+    const volumeOptions = {
+      apartment: [
+        { value: '1', text: '1-комнатная' },
+        { value: '2', text: '2-комнатная' },
+        { value: '3', text: '3-комнатная' },
+        { value: '4', text: '4+ комнаты' }
+      ],
+      office: [
+        { value: '5', text: 'До 5 рабочих мест' },
+        { value: '15', text: '5–15 рабочих мест' },
+        { value: '30', text: '15–30 рабочих мест' },
+        { value: '50', text: '30+ рабочих мест' }
+      ],
+      gazelle: [
+        { value: 'small', text: 'До 1/3 кузова' },
+        { value: 'medium', text: 'До 2/3 кузова' },
+        { value: 'full', text: 'Полный кузов' }
+      ],
+      trash: [
+        { value: '2', text: 'До 2 м³' },
+        { value: '5', text: '2–5 м³' },
+        { value: '10', text: '5–10 м³' },
+        { value: '15', text: '10+ м³' }
+      ]
+    };
+
+    const volumeLabels = {
+      apartment: 'Сколько комнат?',
+      office: 'Рабочих мест',
+      gazelle: 'Объём загрузки',
+      trash: 'Объём мусора'
+    };
+
+    let calculated = false;
+
+    const openCalc = () => {
+      calcOverlay.classList.add('is-open');
+      calcOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeCalc = () => {
+      calcOverlay.classList.remove('is-open');
+      calcOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    calcFab.addEventListener('click', openCalc);
+    calcClose.addEventListener('click', closeCalc);
+
+    calcOverlay.addEventListener('click', e => {
+      if (e.target === calcOverlay) closeCalc();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && calcOverlay.classList.contains('is-open')) closeCalc();
+    });
+
+    if (calcCtaLink) {
+      calcCtaLink.addEventListener('click', e => {
+        e.preventDefault();
+        closeCalc();
+        const target = document.getElementById('contact');
+        if (target) setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 200);
+      });
+    }
+
+    const showFields = svc => {
+      if (!svc) {
+        calcVolumeField.hidden = true;
+        calcFloorRow.hidden = true;
+        calcDistanceField.hidden = true;
+        calcSubmitBtn.disabled = true;
+        calcResultEl.hidden = true;
+        calculated = false;
+        return;
+      }
+
+      calcVolumeEl.innerHTML = '';
+      volumeOptions[svc].forEach(opt => {
+        const o = document.createElement('option');
+        o.value = opt.value;
+        o.textContent = opt.text;
+        calcVolumeEl.appendChild(o);
+      });
+
+      calcVolumeLabel.textContent = volumeLabels[svc];
+      calcVolumeField.hidden = false;
+      calcFloorRow.hidden = false;
+      calcDistanceField.hidden = !(svc === 'apartment' || svc === 'office');
+      calcSubmitBtn.disabled = false;
+      calcResultEl.hidden = true;
+      calculated = false;
+    };
+
+    const calculate = () => {
+      const svc = calcServiceEl.value;
+      if (!svc) return;
+
+      const vol = calcVolumeEl.value;
+      const floor = parseInt(calcFloorEl.value, 10);
+      const noElevator = calcElevatorEl.value === 'no';
+      const dist = calcDistanceEl.value;
+
+      let base = 0;
+
+      if (svc === 'apartment') {
+        base = { 1: 5000, 2: 9000, 3: 15000, 4: 22000 }[vol] || 5000;
+      } else if (svc === 'office') {
+        base = { 5: 10000, 15: 22000, 30: 40000, 50: 60000 }[vol] || 10000;
+      } else if (svc === 'gazelle') {
+        base = { small: 3500, medium: 5500, full: 7500 }[vol] || 3500;
+      } else if (svc === 'trash') {
+        base = { 2: 3500, 5: 6000, 10: 10000, 15: 16000 }[vol] || 3500;
+      }
+
+      if (floor > 1 && noElevator) {
+        const perFloor = svc === 'office' ? 800 : svc === 'gazelle' ? 400 : 500;
+        const floorExtra = (floor - 1) * perFloor;
+        base += svc === 'apartment' ? floorExtra * 2 : floorExtra;
+      }
+
+      if (svc === 'apartment' || svc === 'office') {
+        const mult = { near: 1, mid: 1.15, far: 1.3 }[dist] || 1;
+        base = Math.round(base * mult);
+      }
+
+      const low = Math.round(base * 0.85 / 500) * 500;
+      const high = Math.round(base * 1.15 / 500) * 500;
+
+      calcResultPrice.textContent = low.toLocaleString('ru-RU') + ' \u2013 ' + high.toLocaleString('ru-RU') + ' \u20BD';
+      calcResultEl.hidden = false;
+      calculated = true;
+    };
+
+    calcServiceEl.addEventListener('change', () => showFields(calcServiceEl.value));
+    calcSubmitBtn.addEventListener('click', calculate);
+
+    [calcVolumeEl, calcFloorEl, calcElevatorEl, calcDistanceEl].forEach(el => {
+      el.addEventListener('change', () => { if (calculated) calculate(); });
+    });
+  }
