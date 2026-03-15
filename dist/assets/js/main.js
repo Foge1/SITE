@@ -319,15 +319,13 @@ const navbar = document.getElementById('navbar');
       if (needMovers) {
         movers = people * 1400;
         if (noElevator && floor > 1) {
-          movers += people * (floor - 1) * 150;
+          movers += people * floor * 150;
         }
       }
 
       const total = transport + movers;
-      const low = Math.round(total * 0.9 / 500) * 500;
-      const high = Math.round(total * 1.1 / 500) * 500;
 
-      calcResultPrice.textContent = 'от ' + low.toLocaleString('ru-RU') + ' \u20BD';
+      calcResultPrice.textContent = 'от ' + total.toLocaleString('ru-RU') + ' \u20BD';
       calcResultEl.hidden = false;
       calculated = true;
     };
