@@ -264,6 +264,18 @@ const navbar = document.getElementById('navbar');
         return;
       }
 
+      if (svc === 'helpers') {
+        calcVolumeField.hidden = true;
+        calcDistanceField.hidden = true;
+        calcMoversField.hidden = true;
+        calcPeopleField.hidden = false;
+        calcFloorRow.hidden = false;
+        calcSubmitBtn.disabled = false;
+        calcResultEl.hidden = true;
+        calculated = false;
+        return;
+      }
+
       calcVolumeEl.innerHTML = '';
       volumeOptions[svc].forEach(opt => {
         const o = document.createElement('option');
@@ -288,12 +300,26 @@ const navbar = document.getElementById('navbar');
       const svc = calcServiceEl.value;
       if (!svc) return;
 
-      const vol = calcVolumeEl.value;
-      const dist = calcDistanceEl.value;
-      const needMovers = calcMoversEl.value === 'yes';
       const people = parseInt(calcPeopleEl.value, 10);
       const floor = parseInt(calcFloorEl.value, 10);
       const noElevator = calcElevatorEl.value === 'no';
+
+      if (svc === 'helpers') {
+        let movers = people * 1400;
+        if (noElevator && floor > 1) {
+          movers += people * floor * 150;
+        }
+        const noteEl = calcResultEl.querySelector('.calc-result-note');
+        calcResultPrice.textContent = 'от ' + movers.toLocaleString('ru-RU') + ' \u20BD';
+        noteEl.textContent = 'Точную цену назовём после уточнения деталей';
+        calcResultEl.hidden = false;
+        calculated = true;
+        return;
+      }
+
+      const vol = calcVolumeEl.value;
+      const dist = calcDistanceEl.value;
+      const needMovers = calcMoversEl.value === 'yes';
 
       let transport = 0;
 
