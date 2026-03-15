@@ -125,6 +125,7 @@ const navbar = document.getElementById('navbar');
         return;
       }
       const formData = new FormData(contactForm);
+      formData.delete('website');
 
       if (submitButton) {
         submitButton.disabled = true;
