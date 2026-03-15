@@ -1404,6 +1404,8 @@
     gap: 14px;
   }
 
+  .calc-body [hidden] { display: none !important; }
+
   .calc-field {
     display: flex;
     flex-direction: column;

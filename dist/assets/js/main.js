@@ -202,8 +202,8 @@ const navbar = document.getElementById('navbar');
         { value: 'full', text: 'Полный кузов' }
       ],
       trash: [
-        { value: 'gazelle', text: 'Газель \u2014 от 6 000 \u20BD' },
-        { value: 'kamaz', text: 'КамАЗ \u2014 от 9 000 \u20BD' }
+        { value: 'gazelle', text: 'Газель' },
+        { value: 'kamaz', text: 'КамАЗ' }
       ]
     };
 
