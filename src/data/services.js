@@ -3,13 +3,20 @@ const path = require("path");
 
 const servicesDir = path.join(__dirname, "services");
 const defaultServiceOrder = [
+  "pomosh-na-chas-voronezh",
   "kvartirnyj-pereezd-voronezh",
   "ofisnyj-pereezd-voronezh",
   "gazel-s-gruzchikami-voronezh",
+  "takelazhnye-raboty-voronezh",
   "vyvoz-musora-voronezh"
 ];
 
 const serviceMetaBySlug = {
+  "pomosh-na-chas-voronezh": {
+    name: "Помощь на час",
+    homeText: "Грузчики на час для переноски, подъёма и разгрузки — без привязки к машине.",
+    relatedText: "Когда нужны просто руки: поднять мебель, разгрузить машину, помочь на ремонте."
+  },
   "kvartirnyj-pereezd-voronezh": {
     name: "Квартирный переезд",
     homeText: "Переезд квартиры под ключ с разборкой мебели, перевозкой и заносом.",
@@ -25,6 +32,11 @@ const serviceMetaBySlug = {
     homeText: "Машина и бригада в одном заказе для разовых перевозок и срочных задач.",
     relatedText: "Подходит для точечных перевозок, когда нужна машина и грузчики на несколько часов."
   },
+  "takelazhnye-raboty-voronezh": {
+    name: "Такелажные работы",
+    homeText: "Перемещение пианино, сейфов, станков и другого тяжёлого оборудования.",
+    relatedText: "Для тяжёлых и нестандартных грузов: оценим задачу и подберём оснастку."
+  },
   "vyvoz-musora-voronezh": {
     name: "Вывоз мусора",
     homeText: "Вынос, погрузка и вывоз строительного мусора, упаковки и старой мебели.",
@@ -33,6 +45,20 @@ const serviceMetaBySlug = {
 };
 
 const contextualLinkTemplates = {
+  "pomosh-na-chas-voronezh": [
+    {
+      targetSlug: "gazel-s-gruzchikami-voronezh",
+      before: "Если помимо людей нужна машина для перевозки, удобнее сразу заказать ",
+      anchor: "газель с грузчиками",
+      after: " — транспорт и бригада приедут вместе."
+    },
+    {
+      targetSlug: "takelazhnye-raboty-voronezh",
+      before: "Для тяжёлых и нестандартных грузов — пианино, сейфов, станков — лучше подходят ",
+      anchor: "такелажные работы",
+      after: " с подбором оснастки под конкретный объект."
+    }
+  ],
   "kvartirnyj-pereezd-voronezh": [
     {
       targetSlug: "gazel-s-gruzchikami-voronezh",
@@ -69,10 +95,24 @@ const contextualLinkTemplates = {
       after: ", чтобы одна команда закрыла все этапы без повторных выездов."
     },
     {
-      targetSlug: "ofisnyj-pereezd-voronezh",
-      before: "Для бизнес-задач с техникой и документами лучше подходит ",
-      anchor: "офисный переезд",
-      after: ", где мы заранее планируем очередность отделов и работу в окнах без простоя."
+      targetSlug: "pomosh-na-chas-voronezh",
+      before: "Если машина не нужна и достаточно рабочих рук, можно заказать ",
+      anchor: "помощь на час",
+      after: " — грузчики приедут без транспорта и помогут с переноской."
+    }
+  ],
+  "takelazhnye-raboty-voronezh": [
+    {
+      targetSlug: "pomosh-na-chas-voronezh",
+      before: "Если задача проще и не требует специальной оснастки, подойдёт формат ",
+      anchor: "помощь на час",
+      after: " — грузчики приедут и помогут с переноской обычных вещей."
+    },
+    {
+      targetSlug: "gazel-s-gruzchikami-voronezh",
+      before: "Когда помимо такелажа нужна перевозка обычных вещей, удобно добавить ",
+      anchor: "газель с грузчиками",
+      after: " и закрыть обе задачи за один день."
     }
   ],
   "vyvoz-musora-voronezh": [
