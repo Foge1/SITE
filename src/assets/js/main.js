@@ -185,16 +185,13 @@ const navbar = document.getElementById('navbar');
 
     const volumeOptions = {
       apartment: [
-        { value: '1', text: '1-комнатная' },
-        { value: '2', text: '2-комнатная' },
-        { value: '3', text: '3-комнатная' },
-        { value: '4', text: '4+ комнаты' }
+        { value: '3', text: '3 м' },
+        { value: '4', text: '4 м' },
+        { value: '6', text: '6 м' }
       ],
       office: [
-        { value: '5', text: 'До 5 рабочих мест' },
-        { value: '15', text: '5\u201315 рабочих мест' },
-        { value: '30', text: '15\u201330 рабочих мест' },
-        { value: '50', text: '30+ рабочих мест' }
+        { value: '4', text: '4 м' },
+        { value: '6', text: '6 м' }
       ],
       gazelle: [
         { value: '3', text: '3 м' },
@@ -208,8 +205,8 @@ const navbar = document.getElementById('navbar');
     };
 
     const volumeLabels = {
-      apartment: 'Сколько комнат?',
-      office: 'Рабочих мест',
+      apartment: 'Длина кузова',
+      office: 'Длина кузова',
       gazelle: 'Длина кузова',
       trash: 'Какая машина?'
     };
@@ -300,32 +297,38 @@ const navbar = document.getElementById('navbar');
 
       let transport = 0;
 
-      if (svc === 'apartment') {
-        transport = { 1: 5000, 2: 9000, 3: 15000, 4: 22000 }[vol] || 5000;
-      } else if (svc === 'office') {
-        transport = { 5: 10000, 15: 22000, 30: 40000, 50: 60000 }[vol] || 10000;
-      } else if (svc === 'gazelle') {
+      if (svc === 'apartment' || svc === 'office' || svc === 'gazelle') {
         transport = { 3: 2400, 4: 2700, 6: 3800 }[vol] || 2400;
       } else if (svc === 'trash') {
         transport = { gazelle: 6000, kamaz: 9000 }[vol] || 6000;
       }
 
-      if (svc === 'apartment' || svc === 'office') {
-        const mult = { near: 1, mid: 1.15, far: 1.3 }[dist] || 1;
-        transport = Math.round(transport * mult);
-      }
-
       let movers = 0;
       if (needMovers) {
         movers = people * 1400;
-        if (noElevator && floor > 1) {
-          movers += people * floor * 150;
+      }
+
+      let distNote = false;
+      if (svc === 'apartment' || svc === 'office') {
+        if (dist === 'mid') {
+          transport += transport / 2;
+          if (needMovers) movers += people * 700;
+        } else if (dist === 'far') {
+          distNote = true;
         }
       }
 
+      if (needMovers && noElevator && floor > 1) {
+        movers += people * floor * 150;
+      }
+
       const total = transport + movers;
+      const noteEl = calcResultEl.querySelector('.calc-result-note');
 
       calcResultPrice.textContent = 'от ' + total.toLocaleString('ru-RU') + ' \u20BD';
+      noteEl.textContent = distNote
+        ? 'Километраж за пределами города рассчитаем при звонке и добавим к стоимости'
+        : 'Точную цену назовём после уточнения деталей';
       calcResultEl.hidden = false;
       calculated = true;
     };
