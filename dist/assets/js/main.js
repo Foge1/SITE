@@ -118,6 +118,12 @@ const navbar = document.getElementById('navbar');
       event.preventDefault();
 
       const submitButton = contactForm.querySelector('button[type="submit"]');
+      const honeypot = contactForm.querySelector('[name="website"]');
+      if (honeypot && honeypot.value) {
+        setFormMessage('Спасибо! Заявка отправлена, мы скоро перезвоним.', 'is-success');
+        contactForm.reset();
+        return;
+      }
       const formData = new FormData(contactForm);
 
       if (submitButton) {

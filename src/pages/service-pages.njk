@@ -9,6 +9,7 @@ eleventyComputed:
   title: "{{ service.title }}"
   description: "{{ service.description }}"
   canonicalPath: "{{ service.canonicalPath }}"
+  ogImage: "{{ service.ogImage or '' }}"
 ---
 <!DOCTYPE html>
 <html lang="ru">

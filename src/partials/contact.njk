@@ -2,9 +2,9 @@
   <div class="sec-head reveal">
     <div>
       <div class="sec-label">Связаться</div>
-      <h2 class="sec-title">Оставить заявку</h2>
+      <h2 class="sec-title">Оставьте заявку</h2>
     </div>
-    <p class="sec-sub">Перезвоним в течение 5 минут и согласуем выезд</p>
+    <p class="sec-sub">Перезвоним за 5 минут, обсудим задачу и назовём цену.</p>
   </div>
   <div class="contact-body">
     <div class="contact-info reveal">
@@ -15,6 +15,10 @@
     </div>
     <form action="/send.php" method="post" id="contact-form">
       <div class="contact-form reveal rd2">
+        <div class="field-wrap" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden">
+          <label for="website">Не заполняйте</label>
+          <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+        </div>
         <div class="field-wrap">
           <input type="text" name="name" placeholder="Ваше имя">
         </div>
