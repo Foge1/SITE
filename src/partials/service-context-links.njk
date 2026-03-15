@@ -1,0 +1,19 @@
+{%- set currentService = currentService or service -%}
+{%- set contextualLinks = currentService.contextualLinks or [] -%}
+
+{%- if contextualLinks.length -%}
+<section class="service-context" aria-labelledby="service-context-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Смежные задачи</div>
+      <h2 class="sec-title" id="service-context-title">Что часто добавляют к этой услуге</h2>
+    </div>
+    <p class="sec-sub">Если по ходу работы меняется объем, сразу подключим подходящий формат без повторного поиска подрядчика.</p>
+  </div>
+  <div class="seo-copy reveal">
+    {%- for item in contextualLinks -%}
+    <p>{{ item.before }}<a href="{{ item.path | url }}" class="inline-service-link">{{ item.anchor }}</a>{{ item.after }}</p>
+    {%- endfor -%}
+  </div>
+</section>
+{%- endif -%}

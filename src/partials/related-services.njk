@@ -1,0 +1,23 @@
+{%- set currentService = currentService or service -%}
+{%- set relatedSectionMeta = relatedSectionMeta or {} -%}
+{%- set relatedServices = currentService.otherServices or [] -%}
+
+{%- if relatedServices.length -%}
+<section class="seo-services service-links" aria-labelledby="service-links-title">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">{{ relatedSectionMeta.label or "Другие услуги" }}</div>
+      <h2 class="sec-title" id="service-links-title">{{ relatedSectionMeta.title or "Другие услуги по переездам и перевозке" }}</h2>
+    </div>
+    <p class="sec-sub">{{ relatedSectionMeta.subtitle or "Если задача шире одного выезда, подключим подходящую услугу той же командой." }}</p>
+  </div>
+  <div class="seo-services-grid">
+    {%- for item in relatedServices -%}
+    <a href="{{ item.path | url }}" class="seo-service-item service-link-item reveal rd{{ (loop.index0 % 3) + 1 }}">
+      <strong>{{ item.name }}</strong>
+      <span>{{ item.relatedText }}</span>
+    </a>
+    {%- endfor -%}
+  </div>
+</section>
+{%- endif -%}

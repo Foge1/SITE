@@ -1,4 +1,5 @@
 {%- set serviceHeroVariant = 'default' -%}
+{%- set currentService = service -%}
 {% include "service-hero.njk" %}
 
 <section class="seo-services" id="services" aria-labelledby="service-includes-title">
@@ -98,6 +99,8 @@
   <p class="geo-note reveal">{{ service.pricing.note }}</p>
 </section>
 
+{% include "service-context-links.njk" %}
+
 <section class="service-faq" aria-labelledby="service-faq-title">
   <div class="sec-head reveal">
     <div>
@@ -116,23 +119,7 @@
   </div>
 </section>
 
-<section class="seo-services service-links" aria-labelledby="service-links-title">
-  <div class="sec-head reveal">
-    <div>
-      <div class="sec-label">Полезные ссылки</div>
-      <h2 class="sec-title" id="service-links-title">ПО ТЕМЕ ПЕРЕЕЗДА И ПЕРЕВОЗКИ</h2>
-    </div>
-    <p class="sec-sub">Переходите на смежные услуги и выбирайте нужный формат работы.</p>
-  </div>
-  <div class="seo-services-grid">
-    {%- for link in service.internalLinks -%}
-    <a href="{{ link.href | url }}" class="seo-service-item service-link-item reveal rd{{ (loop.index0 % 3) + 1 }}">
-      <strong>{{ link.label }}</strong>
-      <span>{{ link.description }}</span>
-    </a>
-    {%- endfor -%}
-  </div>
-</section>
+{% include "related-services.njk" %}
 
 <script type="application/ld+json">
 {

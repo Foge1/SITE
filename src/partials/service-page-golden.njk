@@ -2,7 +2,6 @@
 {%- set serviceHeroVariant = 'golden' -%}
 {%- set sectionsMeta = landing.sections or {} -%}
 {%- set sectionOrder = landing.sectionOrder or ['advantages', 'includes', 'scenarios', 'process', 'pricing', 'faq'] -%}
-{%- set linkItems = landing.internalLinks or service.internalLinks -%}
 {% include "service-hero.njk" %}
 
 {% macro renderSectionHead(meta, defaultLabel, defaultTitle, defaultSubtitle, titleId) -%}
@@ -134,28 +133,15 @@
     {%- endfor -%}
   </div>
 </section>
-  {%- elif section == 'links' and linkItems and linkItems.length -%}
-<section class="seo-services service-links" aria-labelledby="service-links-title">
-  {{ renderSectionHead(
-    sectionsMeta.links,
-    'Полезные ссылки',
-    'ПО ТЕМЕ ПЕРЕЕЗДА И ПЕРЕВОЗКИ',
-    'Переходите на смежные услуги и выбирайте нужный формат работы.',
-    'service-links-title'
-  ) }}
-  <div class="seo-services-grid">
-    {%- for link in linkItems -%}
-    <a href="{{ link.href | url }}" class="seo-service-item service-link-item reveal rd{{ (loop.index0 % 3) + 1 }}">
-      <strong>{{ link.label }}</strong>
-      <span>{{ link.description }}</span>
-    </a>
-    {%- endfor -%}
-  </div>
-</section>
   {%- elif section == 'geo' -%}
 {% include "geo-coverage.njk" %}
   {%- endif -%}
 {%- endfor -%}
+
+{%- set currentService = service -%}
+{%- set relatedSectionMeta = sectionsMeta.links or {} -%}
+{% include "service-context-links.njk" %}
+{% include "related-services.njk" %}
 
 {%- if landing.faq and landing.faq.length -%}
 <script type="application/ld+json">
