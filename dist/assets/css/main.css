@@ -1093,10 +1093,15 @@
     }
 
     .service-hero-visual {
-      min-height: 360px;
+      min-height: auto;
     }
 
     .service-hero-visual-image {
+      min-height: auto;
+      height: 280px;
+    }
+
+    .service-hero-visual--fallback {
       min-height: 360px;
     }
 
@@ -1109,11 +1114,18 @@
     }
 
     .service-hero-visual-card {
+      position: relative;
+      inset: auto;
       max-width: none;
-      right: 14px;
-      left: 14px;
       width: auto;
       padding: 18px 16px;
+    }
+
+    .service-hero-visual--fallback .service-hero-visual-card {
+      position: absolute;
+      right: 14px;
+      left: 14px;
+      bottom: 14px;
     }
 
     .service-hero-visual-title {
@@ -1219,11 +1231,11 @@
       line-height: 1.56;
     }
 
-    .service-hero-visual {
-      min-height: 300px;
+    .service-hero-visual-image {
+      height: 220px;
     }
 
-    .service-hero-visual-image {
+    .service-hero-visual--fallback {
       min-height: 300px;
     }
 
