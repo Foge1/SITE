@@ -829,6 +829,14 @@
     padding: 22px 20px;
   }
 
+  .service-pricing-item:last-child:nth-child(3n + 1) {
+    grid-column: 1 / -1;
+  }
+
+  .service-pricing-item:last-child:nth-child(3n + 2) {
+    grid-column: span 2;
+  }
+
   .service-pricing-item-title {
     font-size: 14px;
     line-height: 1.4;
@@ -875,6 +883,7 @@
   }
 
   .service-faq-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
     border-right: none;
   }
 
@@ -1163,6 +1172,10 @@
 
     .service-pricing-grid {
       grid-template-columns: 1fr 1fr;
+    }
+
+    .service-pricing-item:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
     }
   }
 
