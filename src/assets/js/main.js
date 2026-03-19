@@ -102,6 +102,9 @@ const navbar = document.getElementById('navbar');
     navbar.classList.toggle('scrolled', window.scrollY > 10);
   });
 
+  const tsField = document.getElementById('form-timestamp');
+  if (tsField) tsField.value = Date.now();
+
   const contactForm = document.getElementById('contact-form');
   const formMessage = document.getElementById('form-message');
 
@@ -126,6 +129,22 @@ const navbar = document.getElementById('navbar');
       }
       const formData = new FormData(contactForm);
       formData.delete('website');
+
+      const ts = parseInt(document.getElementById('form-timestamp').value, 10);
+      if (!ts || Date.now() - ts < 4000) {
+        setFormMessage('Не удалось отправить заявку. Попробуйте ещё раз.', 'is-error');
+        if (submitButton) submitButton.disabled = false;
+        return;
+      }
+
+      const phone = formData.get('phone') || '';
+      if (!/^[\d\s\+\(\)\-]{7,20}$/.test(phone.trim())) {
+        setFormMessage('Введите корректный номер телефона.', 'is-error');
+        if (submitButton) submitButton.disabled = false;
+        return;
+      }
+
+      formData.delete('_timestamp');
 
       if (submitButton) {
         submitButton.disabled = true;
