@@ -36,39 +36,55 @@
 {
   "@context": "https://schema.org",
   "@type": "MovingCompany",
+  "@id": "https://gruz-vrn.ru/#organization",
   "name": "ГРУЗЪ",
-  "url": "https://gruz-vrn.ru/pomosh-na-chas-voronezh/",
-  "telephone": "+7 900 952-93-91",
-  "image": "https://gruz-vrn.ru/assets/img/og-image.jpg",
-  "priceRange": "₽₽",
-  "openingHours": "Mo-Su 07:00-23:00",
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Воронеж"
-    },
-    {
-      "@type": "AdministrativeArea",
-      "name": "Воронежская область"
-    }
-  ],
+  "url": "https://gruz-vrn.ru",
+  "telephone": "+79009529391",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Воронеж",
-    "addressRegion": "Воронежская область",
     "addressCountry": "RU"
   },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": "51.6603",
-    "longitude": "39.2003"
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
+    ],
+    "opens": "07:00",
+    "closes": "23:00"
   },
-  "sameAs": [
-    "https://t.me/gruzvrn1"
-  ]
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 51.6605,
+      "longitude": 39.2005
+    },
+    "geoRadius": "100000"
+  },
+  "sameAs": []
 }
-</script>
-<!-- Yandex.Metrika counter -->
+</script><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Помощь на час в Воронеже",
+  "description": "Грузчики на час в Воронеже: поднимем мебель, разгрузим машину, перенесём коробки, поможем на ремонте. Своя бригада, быстрая подача, почасовая оплата.",
+  "provider": {
+    "@type": "MovingCompany",
+    "@id": "https://gruz-vrn.ru/#organization"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "Воронеж"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "700",
+    "priceCurrency": "RUB"
+  }
+}
+</script><!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
