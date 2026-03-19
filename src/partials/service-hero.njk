@@ -19,6 +19,9 @@
         <span class="service-hero-title-line">{{ heroData.title or service.h1 }}</span>
       </h1>
       <p class="service-hero-subtitle">{{ heroData.subtitle }}</p>
+      {%- if heroData.priceFrom -%}
+      <div class="service-hero-price-pill">{{ heroData.priceFrom }}</div>
+      {%- endif -%}
       <div class="service-hero-cta-row">
         <a href="#contact" class="btn-main"><span>{{ heroData.primaryCtaLabel }}</span></a>
         <a href="{{ heroData.secondaryCtaHref or ('/' | url) }}" class="btn-outline">{{ heroData.secondaryCtaLabel }}</a>

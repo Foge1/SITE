@@ -537,6 +537,17 @@
     animation: fadeUp 0.7s 0.3s forwards;
   }
 
+  .service-hero-price-pill {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--orange);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 20px;
+  }
+
   .service-hero-trust-list {
     margin-top: 28px;
     list-style: none;
