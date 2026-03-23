@@ -8,6 +8,7 @@ permalink: /robots.txt
 {%- endif -%}
 User-agent: *
 Allow: /
+Disallow: /send.php
 
 Host: {{ baseDomain | replace('https://', '') | replace('http://', '') | replace('/', '') }}
 Sitemap: {{ baseDomain }}{{ '/sitemap.xml' | url }}

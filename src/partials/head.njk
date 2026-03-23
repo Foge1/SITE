@@ -59,9 +59,12 @@
   "name": "{{ site.brandName }}",
   "url": "{{ site.domain }}",
   "telephone": "{{ site.phoneHref }}",
+  "logo": "{{ site.domain }}{{ '/assets/img/favicon-source.png' | url }}",
+  "image": "{{ site.domain }}{{ '/assets/img/favicon-source.png' | url }}",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "{{ site.city }}",
+    "addressRegion": "{{ site.region }}",
     "addressCountry": "RU"
   },
   "openingHoursSpecification": {
@@ -81,7 +84,7 @@
     },
     "geoRadius": "100000"
   },
-  "sameAs": []
+  "sameAs": ["{{ site.social.telegram }}"]
 }
 </script>
 {%- if service and service.h1 -%}
@@ -91,8 +94,9 @@
   {%- set heroPrice = service.landing.hero.priceFrom -%}
 {%- endif -%}
 {%- set hasSchemaPrice = heroPrice and 'от' in heroPrice -%}
+{%- set isPerUnit = 'м²' in heroPrice -%}
 {%- if hasSchemaPrice -%}
-  {%- set schemaPrice = heroPrice | replace('от ', '') | replace(' ₽/час', '') | replace(' ₽', '') | replace(' ', '') -%}
+  {%- set schemaPrice = heroPrice | replace('от ', '') | replace(' ₽/м²', '') | replace(' ₽/час', '') | replace(' ₽', '') | replace(' ', '') -%}
 {%- endif -%}
 <script type="application/ld+json">
 {
@@ -109,9 +113,10 @@
     "name": "{{ site.city }}"
   }{% if hasSchemaPrice %},
   "offers": {
-    "@type": "Offer",
-    "price": "{{ schemaPrice }}",
-    "priceCurrency": "RUB"
+    "@type": "AggregateOffer",
+    "lowPrice": "{{ schemaPrice }}",
+    "priceCurrency": "RUB"{% if isPerUnit %},
+    "unitText": "м²"{% endif %}
   }{% endif %}
 }
 </script>
