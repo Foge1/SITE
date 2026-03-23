@@ -37,7 +37,7 @@
     </div>
   </div>
   <div class="service-hero-right">
-    <div class="service-hero-visual reveal rd2{% if not heroImageSrc %} service-hero-visual--fallback{% endif %}">
+    <div class="service-hero-visual{% if not heroImageSrc %} service-hero-visual--fallback{% endif %}">
       {%- if heroImageSrc -%}
       <img class="service-hero-visual-image" src="{{ heroImageSrc | url }}" alt="{{ heroImageAlt }}" width="1536" height="1024" fetchpriority="high">
       {%- else -%}
