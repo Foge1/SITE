@@ -51,6 +51,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ '/assets/css/critical.css' | url }}">
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}">
+{%- if service and service.landing and service.landing.hero and service.landing.hero.image and service.landing.hero.image.src -%}
+<link rel="preload" as="image" href="{{ service.landing.hero.image.src | url }}" fetchpriority="high">
+{%- elif service -%}
+<link rel="preload" as="image" href="{{ '/assets/img/hero.webp' | url }}" fetchpriority="high">
+{%- else -%}
+<link rel="preload" as="image" href="{{ '/assets/img/hero.webp' | url }}" fetchpriority="high">
+{%- endif -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
