@@ -97,6 +97,27 @@ const navbar = document.getElementById('navbar');
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Reviews dots (mobile scroll-snap navigation)
+  const reviewsTrack = document.getElementById('reviewsTrack');
+  const reviewsDots = document.querySelectorAll('.reviews-dot');
+  if (reviewsTrack && reviewsDots.length) {
+    const reviewCards = Array.from(reviewsTrack.querySelectorAll('.review-card'));
+    const dotObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = reviewCards.indexOf(entry.target);
+          reviewsDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        }
+      });
+    }, { root: reviewsTrack, threshold: 0.55 });
+    reviewCards.forEach(card => dotObs.observe(card));
+    reviewsDots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        reviewCards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      });
+    });
+  }
   window.addEventListener('scroll', () => {
     if (!navbar) return;
     navbar.classList.toggle('scrolled', window.scrollY > 10);
