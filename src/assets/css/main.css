@@ -166,16 +166,18 @@
     gap: 0;
   }
   .review-card {
-    padding: 32px 36px;
-    background: var(--off);
+    padding: 36px 36px;
+    background: var(--white);
     border-right: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     display: flex;
     flex-direction: column;
     gap: 16px;
+    transition: background 0.22s;
   }
   .review-card:nth-child(3n) { border-right: none; }
   .review-card:nth-child(n+4) { border-bottom: none; }
+  .review-card:hover { background: var(--off); }
   .review-stars { color: #E8A020; font-size: 16px; letter-spacing: 2px; line-height: 1; }
   .review-text { font-size: 14px; line-height: 1.72; color: var(--ink-mid); flex: 1; }
   .review-meta {
@@ -184,6 +186,8 @@
     justify-content: space-between;
     gap: 12px;
     margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
   }
   .review-author-info { display: flex; flex-direction: column; gap: 2px; }
   .review-author { font-size: 13px; font-weight: 700; color: var(--ink); }
