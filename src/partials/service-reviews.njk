@@ -1,0 +1,33 @@
+{% if service.reviews and service.reviews.length %}
+{% set rdClasses = ["rd1", "rd2", "rd3"] %}
+<section class="reviews" id="reviews">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Отзывы клиентов</div>
+      <h2 class="sec-title">Нам доверяют</h2>
+    </div>
+  </div>
+  <div class="reviews-slider">
+    <div class="reviews-track" id="reviewsTrack">
+      {% for review in service.reviews %}
+      <article class="review-card reveal {{ rdClasses[loop.index0 % 3] }}">
+        <div class="review-stars" aria-label="Оценка 5 из 5">★★★★★</div>
+        <p class="review-text">{{ review.text }}</p>
+        <div class="review-meta">
+          <div class="review-author-info">
+            <span class="review-author">{{ review.author }}</span>
+            <span class="review-date">{{ review.date }}</span>
+          </div>
+          <span class="review-badge">Авито</span>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <div class="reviews-dots" id="reviewsDots" aria-hidden="true">
+      {% for review in service.reviews %}
+      <button class="reviews-dot{% if loop.first %} active{% endif %}" aria-label="Отзыв {{ loop.index }}"></button>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
