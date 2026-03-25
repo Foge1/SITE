@@ -1681,9 +1681,10 @@
 
   @media (max-width: 767px) {
     /* Reviews mobile: horizontal scroll-snap */
-    .reviews-slider { padding: 0; }
+    .reviews-slider { padding: 0; overflow: hidden; width: 100%; }
     .reviews-track {
       display: flex;
+      width: 100%;
       overflow-x: scroll;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
@@ -1695,14 +1696,19 @@
     }
     .reviews-track::-webkit-scrollbar { display: none; }
     .review-card {
-      min-width: 100%;
-      flex-shrink: 0;
+      flex: 0 0 100%;
+      width: 100%;
+      box-sizing: border-box;
+      min-width: 0;
       scroll-snap-align: start;
       border-right: none;
       border-bottom: none;
       border-left: none;
       border-top: none;
+      overflow: hidden;
+      padding: 28px 20px;
     }
+    .review-text { word-break: break-word; overflow-wrap: break-word; }
     .reviews-dots {
       display: flex;
       justify-content: center;
