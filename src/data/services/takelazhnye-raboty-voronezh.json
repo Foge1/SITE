@@ -34,6 +34,10 @@
           "Спецоснастка",
           "Фиксированная цена"
         ]
+      },
+      "image": {
+        "src": "/assets/img/work/takelazh-hero.webp",
+        "alt": "Такелажные работы в Воронеже"
       }
     },
     "sectionOrder": [

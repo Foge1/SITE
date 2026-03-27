@@ -35,6 +35,10 @@
           "Почасовая оплата",
           "Быстрая подача"
         ]
+      },
+      "image": {
+        "src": "/assets/img/work/pomosh-hero.webp",
+        "alt": "Грузчики на час в Воронеже"
       }
     },
     "sectionOrder": [
