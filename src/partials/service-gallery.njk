@@ -1,0 +1,20 @@
+{%- if service.gallery and service.gallery.length -%}
+<section class="our-work">
+  <div class="sec-head reveal">
+    <div>
+      <div class="sec-label">Наши работы</div>
+      <h2 class="sec-title">Фото с заказов</h2>
+    </div>
+  </div>
+  <div class="work-carousel reveal rd2">
+    <div class="work-track">
+      {%- for photo in service.gallery -%}
+      <div class="work-slide">
+        <img src="{{ photo.src | url }}" alt="{{ photo.alt or photo.caption }}" width="800" height="533" loading="lazy">
+        <div class="work-caption">{{ photo.caption }}</div>
+      </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
