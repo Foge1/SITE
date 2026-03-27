@@ -121,7 +121,8 @@
     .services-also .sec-label { padding: 24px 20px 12px; }
   }
 
-  .our-work { border-bottom: none; }
+  .our-work { border: none; }
+  .our-work .sec-head { border-bottom: none; }
   .work-carousel { padding: 0 48px 44px; }
   .work-track {
     display: flex;
