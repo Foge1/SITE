@@ -39,8 +39,8 @@
   "name": "ГРУЗЪ",
   "url": "https://gruz-vrn.ru",
   "telephone": "+79009529391",
-  "logo": "https://gruz-vrn.ru/assets/img/favicon-source.png",
-  "image": "https://gruz-vrn.ru/assets/img/favicon-source.png",
+  "logo": "https://gruz-vrn.ru/assets/img/icon-512.png",
+  "image": "https://gruz-vrn.ru/assets/img/icon-512.png",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Воронеж",
@@ -104,6 +104,14 @@
 <body>
 <nav id="navbar">
   <a href="/" class="nav-logo">ГРУЗ<span>Ъ</span></a>
+  <div class="nav-mobile-actions">
+    <a href="https://t.me/gruzvrn1" class="nav-mobile-btn" target="_blank" rel="noopener" aria-label="Написать в Telegram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="m22 2-11 11"/></svg>
+    </a>
+    <a href="tel:+79009529391" class="nav-mobile-btn" aria-label="Позвонить по номеру +7 900 952-93-91">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </a>
+  </div>
   <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Открыть меню">
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -137,6 +145,10 @@
         <a href="#contact" class="btn-main"><span>Получить расчет</span></a>
         <a href="tel:+79009529391" class="btn-outline">Позвонить сейчас</a>
       </div>
+      <a href="https://t.me/gruzvrn1" class="hero-tg-link" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="m22 2-11 11"/></svg>
+        <span>Написать в Telegram</span>
+      </a>
       <ul class="service-hero-trust-list"><li class="service-hero-trust-item reveal rd1">
           <span class="service-hero-trust-dot"></span>
           <span>Работаем по отделам — без хаоса</span>
@@ -290,7 +302,23 @@
         <h3 class="service-pricing-item-title">Маршрут и число рейсов</h3>
         <p class="service-pricing-item-text">Расстояние между точками и фактический объем перевозки.</p>
       </article></div><p class="service-pricing-note">Примерную цену назовём после короткого созвона, точную — до выезда бригады.</p></div>
-</section><section class="service-faq service-faq-compact" aria-labelledby="service-faq-title">
+</section>
+<div class="mid-cta reveal">
+  <div class="mid-cta-inner">
+    <div class="mid-cta-left">
+      <div class="mid-cta-label">Готовы обсудить?</div>
+      <a href="tel:+79009529391" class="mid-cta-phone">+7 900 952-93-91</a>
+    </div>
+    <div class="mid-cta-actions">
+      <a href="https://t.me/gruzvrn1" class="mid-cta-tg" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="m22 2-11 11"/></svg>
+        Telegram
+      </a>
+      <a href="#contact" class="btn-main mid-cta-btn"><span>Оставить заявку</span></a>
+    </div>
+  </div>
+</div>
+<section class="service-faq service-faq-compact" aria-labelledby="service-faq-title">
   <div class="sec-head reveal">
     <div>
       <div class="sec-label">Вопросы</div>

@@ -1083,6 +1083,7 @@
     .sec-head { padding: 56px 32px 36px; }
     .cta-strip { padding: 52px 32px; }
     .contact-info, .contact-form { padding: 40px 32px; }
+    .mid-cta-inner { padding: 28px 32px; }
     footer { padding: 28px 32px; }
   }
 
@@ -1095,6 +1096,26 @@
       gap: 10px;
     }
     .nav-logo { margin-right: auto; }
+    .nav-mobile-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-mobile-btn {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      background: var(--white);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-mobile-btn:hover { color: var(--orange); border-color: var(--orange); }
+    .nav-mobile-btn svg { width: 20px; height: 20px; }
+    .nav-phone { display: none; }
     .nav-toggle { display: inline-flex; }
     .nav-links {
       width: 100%;
@@ -1210,6 +1231,16 @@
     .home-hero-stats-row,
     .service-hero-stats-row { flex-wrap: wrap; }
     .home-hero-ticker { display: none; }
+    .mid-cta-inner {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 24px 20px;
+      gap: 16px;
+    }
+    .mid-cta-phone { font-size: 26px; }
+    .mid-cta-actions { flex-wrap: wrap; }
+    .mid-cta-tg { flex: 1; justify-content: center; text-align: center; padding: 14px 16px; }
+    .mid-cta-btn { flex: 1; text-align: center; width: auto; padding: 15px 16px; }
 
     .service-hero-subtitle {
       max-width: 100%;
@@ -1303,7 +1334,9 @@
   @media (max-width: 480px) {
     body { font-size: 14px; }
     nav { padding-inline: 14px; }
-    .nav-phone { width: 100%; justify-content: flex-start; padding: 8px 0 2px; }
+    .nav-mobile-actions { gap: 4px; }
+    .nav-mobile-btn { width: 40px; height: 40px; }
+    .nav-mobile-btn svg { width: 18px; height: 18px; }
     .home-hero-left,
     .service-hero-left { padding-inline: 14px; }
     .home-hero-eyebrow,
@@ -1389,6 +1422,8 @@
     .service-hero-desc {
       max-width: 100%;
     }
+
+    .mid-cta-inner { padding-inline: 14px; }
 
     .service-adv-grid,
     .service-scenarios-grid {
@@ -1808,3 +1843,103 @@
     .calc-result { margin: 16px 18px 0; }
     .calc-footer { padding: 16px 18px calc(18px + env(safe-area-inset-bottom)); }
   }
+
+  /* ── Mobile nav action buttons (phone + telegram) ── */
+
+  .nav-mobile-actions { display: none; }
+
+  /* ── Home hero price pill ── */
+
+  .home-hero-price {
+    display: inline-block;
+    padding: 8px 18px;
+    background: var(--orange);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-top: 24px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.36s forwards;
+  }
+
+  /* ── Hero Telegram link ── */
+
+  .hero-tg-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    text-decoration: none;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.5s forwards;
+  }
+  .hero-tg-link svg {
+    width: 18px;
+    height: 18px;
+    color: var(--ink-soft);
+    flex-shrink: 0;
+  }
+  .hero-tg-link span {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-mid);
+    transition: color 0.2s;
+  }
+  .hero-tg-link:hover svg { color: var(--orange); }
+  .hero-tg-link:hover span { color: var(--orange); }
+
+  /* ── Mid-page CTA strip ── */
+
+  .mid-cta {
+    background: var(--ink);
+    border-bottom: 1px solid var(--border);
+  }
+  .mid-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 48px;
+    gap: 24px;
+  }
+  .mid-cta-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 4px;
+  }
+  .mid-cta-phone {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .mid-cta-phone:hover { color: var(--orange); }
+  .mid-cta-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mid-cta-tg {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 15px 22px;
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .mid-cta-tg:hover {
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.06);
+  }
+  .mid-cta-tg svg { width: 18px; height: 18px; }
+  .mid-cta-btn { width: auto; }
