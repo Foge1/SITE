@@ -54,6 +54,7 @@
     </ul>
   </div>
 </section>
+{% include "service-gallery.njk" %}
   {%- elif section == 'scenarios' and landing.scenarios and landing.scenarios.length -%}
 <section class="service-block" aria-labelledby="service-scenarios-title">
   {{ renderSectionHead(

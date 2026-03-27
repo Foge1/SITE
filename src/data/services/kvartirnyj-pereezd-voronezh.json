@@ -196,6 +196,11 @@
     "changefreq": "weekly"
   },
   "h1": "Квартирный переезд в Воронеже",
+  "gallery": [
+    { "src": "/assets/img/work/kvartirnyj-1.webp", "caption": "Бережная упаковка", "alt": "Диван в стрейч-плёнке" },
+    { "src": "/assets/img/work/kvartirnyj-2.webp", "caption": "Защита хрупких вещей", "alt": "Вещи в пузырчатой плёнке" },
+    { "src": "/assets/img/work/work-7-podem-na-etazh.webp", "caption": "Подъём на этаж", "alt": "Коробки в грузовом лифте" }
+  ],
   "hero": {
     "eyebrow": "Переезд квартиры под ключ · Воронеж и пригород",
     "offer": "Перевезем квартиру без потерь времени и лишней суеты.",
