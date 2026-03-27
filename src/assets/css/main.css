@@ -158,6 +158,33 @@
     font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
     color: rgba(255,255,255,0.92);
   }
+  .work-carousel { position: relative; }
+  .work-arrow {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 4;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background 0.2s, opacity 0.2s;
+  }
+  .work-arrow svg { width: 22px; height: 22px; }
+  .work-arrow:hover { background: rgba(0,0,0,0.75); }
+  .work-arrow[hidden] { opacity: 0; pointer-events: none; }
+  .work-arrow--prev { left: 14px; }
+  .work-arrow--next { right: 14px; }
+  @media (min-width: 768px) {
+    .work-arrow { display: flex; }
+  }
 
   .band {
     background: var(--orange);

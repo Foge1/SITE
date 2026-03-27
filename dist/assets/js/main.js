@@ -410,3 +410,29 @@ const navbar = document.getElementById('navbar');
       el.addEventListener('change', () => { if (calculated) calculate(); });
     });
   }
+
+  /* ── Work carousel arrows ── */
+  const workTrack = document.querySelector('.work-track');
+  const prevBtn = document.querySelector('.work-arrow--prev');
+  const nextBtn = document.querySelector('.work-arrow--next');
+
+  if (workTrack && prevBtn && nextBtn) {
+    const updateArrows = () => {
+      const atStart = workTrack.scrollLeft <= 2;
+      const atEnd = workTrack.scrollLeft + workTrack.clientWidth >= workTrack.scrollWidth - 2;
+      prevBtn.hidden = atStart;
+      nextBtn.hidden = atEnd;
+    };
+
+    const scrollBySlide = (dir) => {
+      const slide = workTrack.querySelector('.work-slide');
+      if (!slide) return;
+      const gap = parseFloat(getComputedStyle(workTrack).gap) || 16;
+      workTrack.scrollBy({ left: dir * (slide.offsetWidth + gap), behavior: 'smooth' });
+    };
+
+    prevBtn.addEventListener('click', () => scrollBySlide(-1));
+    nextBtn.addEventListener('click', () => scrollBySlide(1));
+    workTrack.addEventListener('scroll', updateArrows, { passive: true });
+    updateArrows();
+  }
