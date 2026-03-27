@@ -121,13 +121,15 @@
     .services-also .sec-label { padding: 24px 20px 12px; }
   }
 
-  .our-work { border-bottom: 1px solid var(--border); }
+  .our-work { border-bottom: none; }
   .work-carousel { padding: 0 48px 44px; }
   .work-track {
     display: flex;
     gap: 16px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
@@ -135,6 +137,7 @@
   .work-slide {
     flex: 0 0 calc(33.333% - 11px);
     scroll-snap-align: start;
+    scroll-snap-stop: always;
     position: relative;
     overflow: hidden;
     border-radius: 12px;
@@ -159,7 +162,6 @@
   .band {
     background: var(--orange);
     display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
-    border-bottom: 1px solid rgba(0,0,0,0.1);
   }
   .band-item { padding: 36px 32px; border-right: 1px solid rgba(255,255,255,0.22); }
   .band-item:last-child { border-right: none; }
