@@ -121,30 +121,39 @@
     .services-also .sec-label { padding: 24px 20px 12px; }
   }
 
-  .photo-strip {
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
-    border-bottom: 1px solid var(--border); height: 380px;
+  .our-work { border-bottom: 1px solid var(--border); }
+  .work-carousel { padding: 0 48px 44px; }
+  .work-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-  .photo-strip-item {
-    position: relative; overflow: hidden;
-    border-right: 1px solid var(--border); background: #1a1918;
+  .work-track::-webkit-scrollbar { display: none; }
+  .work-slide {
+    flex: 0 0 calc(33.333% - 11px);
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    aspect-ratio: 3 / 2;
   }
-  .photo-strip-item:last-child { border-right: none; }
-  .photo-strip-item img {
-    width: 100%; height: 100%; object-fit: cover; object-position: center top;
-    display: block; transition: transform 0.5s ease; filter: saturate(0.85);
+  .work-slide img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: saturate(0.88); transition: transform 0.5s ease;
   }
-  .photo-strip-item:hover img { transform: scale(1.04); }
-  .photo-strip-item:nth-child(3) img { object-position: center top; }
-  .photo-strip-item::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to top, rgba(17,17,16,0.55) 0%, transparent 55%);
+  .work-slide:hover img { transform: scale(1.04); }
+  .work-slide::after {
+    content: ''; position: absolute; inset: 0; border-radius: 12px;
+    background: linear-gradient(to top, rgba(17,17,16,0.6) 0%, transparent 50%);
     pointer-events: none;
   }
-  .photo-strip-caption {
-    position: absolute; bottom: 16px; left: 16px; z-index: 2;
-    font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    color: rgba(255,255,255,0.9);
+  .work-caption {
+    position: absolute; bottom: 14px; left: 16px; z-index: 2;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.92);
   }
 
   .band {
@@ -1083,6 +1092,7 @@
     .sec-head { padding: 56px 32px 36px; }
     .cta-strip { padding: 52px 32px; }
     .contact-info, .contact-form { padding: 40px 32px; }
+    .work-carousel { padding: 0 32px 36px; }
     .mid-cta-inner { padding: 28px 32px; }
     footer { padding: 28px 32px; }
   }
@@ -1191,19 +1201,8 @@
     .service-card:nth-child(n+5) { border-bottom: none; }
     .why-item { border-right: none; padding: 32px 20px; border-bottom: 1px solid var(--border); }
     .why-item:last-child { border-bottom: none; }
-    .photo-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); height: auto; }
-    .photo-strip-item {
-      height: auto;
-      aspect-ratio: 4 / 3;
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .photo-strip-item:nth-child(2n) { border-right: none; }
-    .photo-strip-item:last-child {
-      grid-column: 1 / -1;
-      border-right: none;
-    }
-    .photo-strip-item:last-child { border-bottom: none; }
+    .work-carousel { padding: 0 20px 32px; }
+    .work-slide { flex: 0 0 85vw; }
     .band { grid-template-columns: 1fr 1fr; }
     .band-item:nth-child(2) { border-right: none; }
     .band-item { border-bottom: 1px solid rgba(255,255,255,0.15); }
@@ -1346,11 +1345,12 @@
     .contact-info,
     .contact-form,
     footer { padding-inline: 14px; }
-    .band { grid-template-columns: 1fr; }
+    .band { grid-template-columns: 1fr 1fr; }
     .band-item {
-      border-right: none;
-      padding: 28px 18px;
+      padding: 18px 16px;
     }
+    .band-num { font-size: 38px; }
+    .band-label { font-size: 10px; }
     .process-grid { grid-template-columns: 1fr; }
     .process-step {
       border-right: none;
@@ -1369,12 +1369,8 @@
     .service-card,
     .service-card:nth-child(2n) { border-right: none; }
     .service-card:nth-child(n+4) { border-bottom: none; }
-    .photo-strip { grid-template-columns: 1fr; }
-    .photo-strip-item {
-      border-right: none;
-      aspect-ratio: 16 / 10;
-    }
-    .photo-strip-item:last-child { border-bottom: none; }
+    .work-carousel { padding: 0 14px 28px; }
+    .work-slide { flex: 0 0 85vw; }
 
     .service-hero-breadcrumbs {
       margin-bottom: 18px;
