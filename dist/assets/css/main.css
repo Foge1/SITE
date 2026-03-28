@@ -1404,7 +1404,8 @@
     .services-grid { grid-template-columns: 1fr; }
     .service-card,
     .service-card:nth-child(2n) { border-right: none; }
-    .service-card:nth-child(n+4) { border-bottom: none; }
+    .service-card:nth-child(n+4) { border-bottom: 1px solid var(--border); }
+    .service-card:last-child { border-bottom: none; }
     .work-carousel { padding: 0 14px 28px; }
     .work-slide { flex: 0 0 85vw; }
 
