@@ -142,7 +142,6 @@
 
 {%- set currentService = service -%}
 {%- set relatedSectionMeta = sectionsMeta.links or {} -%}
-{% include "service-context-links.njk" %}
 {% include "related-services.njk" %}
 
 {%- set hasPathPrefix = ('/' | url) != '/' -%}

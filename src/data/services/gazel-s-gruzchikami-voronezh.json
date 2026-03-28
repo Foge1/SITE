@@ -42,13 +42,11 @@
       }
     },
     "sectionOrder": [
-      "scenarios",
       "includes",
       "advantages",
       "pricing",
       "process",
-      "faq",
-      "links"
+      "faq"
     ],
     "sections": {
       "scenarios": {

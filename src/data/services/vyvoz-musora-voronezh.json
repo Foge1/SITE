@@ -43,12 +43,10 @@
     },
     "sectionOrder": [
       "includes",
-      "scenarios",
       "process",
       "advantages",
       "pricing",
-      "faq",
-      "links"
+      "faq"
     ],
     "sections": {
       "includes": {
