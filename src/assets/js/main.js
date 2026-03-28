@@ -124,8 +124,8 @@ const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 10);
     if (stickyBar && heroSection) {
-      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-      stickyBar.classList.toggle('visible', window.scrollY > heroBottom);
+      const trigger = heroSection.offsetTop + heroSection.offsetHeight * 0.65;
+      stickyBar.classList.toggle('visible', window.scrollY > trigger);
     }
   });
 
