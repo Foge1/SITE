@@ -451,16 +451,39 @@ const navbar = document.getElementById('navbar');
       if (e.target === qfOverlay) qfOverlay.classList.remove('is-open');
     });
 
-    qfForm.addEventListener('submit', (e) => {
+    qfForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const name = qfForm.querySelector('[name="name"]').value;
-      const phone = qfForm.querySelector('[name="phone"]').value;
-      console.log('Quick form:', { name, phone });
-      qfMsg.textContent = 'Заявка отправлена! Перезвоним в ближайшее время.';
-      qfForm.reset();
-      setTimeout(() => {
-        qfOverlay.classList.remove('is-open');
-        qfMsg.textContent = '';
-      }, 2000);
+      const phone = qfForm.querySelector('[name="phone"]').value.trim();
+      if (!/^[\d\s\+\(\)\-]{7,20}$/.test(phone)) {
+        qfMsg.textContent = 'Введите корректный номер телефона.';
+        qfMsg.style.color = '#b1261f';
+        return;
+      }
+      const submitBtn = qfForm.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      qfMsg.textContent = 'Отправляем...';
+      qfMsg.style.color = '';
+      try {
+        const fd = new FormData();
+        fd.append('name', qfForm.querySelector('[name="name"]').value);
+        fd.append('phone', phone);
+        fd.append('service', 'Быстрая заявка с мобильной формы');
+        const res = await fetch('/send.php', { method: 'POST', body: fd });
+        const data = await res.json();
+        if (res.ok && data && data.ok === true) {
+          qfMsg.style.color = '#1f7a3f';
+          qfMsg.textContent = 'Заявка отправлена! Перезвоним в ближайшее время.';
+          qfForm.reset();
+          setTimeout(() => { qfOverlay.classList.remove('is-open'); qfMsg.textContent = ''; }, 2000);
+        } else {
+          qfMsg.style.color = '#b1261f';
+          qfMsg.textContent = 'Не удалось отправить. Попробуйте ещё раз.';
+        }
+      } catch {
+        qfMsg.style.color = '#b1261f';
+        qfMsg.textContent = 'Ошибка сети. Попробуйте позвонить.';
+      } finally {
+        submitBtn.disabled = false;
+      }
     });
   }
