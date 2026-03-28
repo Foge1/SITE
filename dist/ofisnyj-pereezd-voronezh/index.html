@@ -569,9 +569,15 @@
     </button>
     <div class="quick-form-title">Оставьте заявку — перезвоним за 5 минут</div>
     <form id="quickForm">
-      <input type="text" name="name" placeholder="Ваше имя" class="quick-form-input">
-      <input type="tel" name="phone" placeholder="Телефон" required class="quick-form-input">
-      <button type="submit" class="quick-form-submit">Отправить заявку</button>
+      <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true">
+        <input type="text" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <input type="hidden" name="_qftoken" id="qfToken">
+      <input type="text" name="name" placeholder="Ваше имя" required class="quick-form-input" id="qfName">
+      <div class="quick-form-error" id="qfNameErr"></div>
+      <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required class="quick-form-input" id="qfPhone">
+      <div class="quick-form-error" id="qfPhoneErr"></div>
+      <button type="submit" class="quick-form-submit" id="qfSubmit" disabled>Отправить заявку</button>
     </form>
     <div class="quick-form-msg" id="quickFormMsg"></div>
   </div>

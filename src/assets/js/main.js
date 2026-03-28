@@ -443,47 +443,125 @@ const navbar = document.getElementById('navbar');
   const qfOverlay = document.getElementById('quickFormOverlay');
   const qfForm = document.getElementById('quickForm');
   const qfMsg = document.getElementById('quickFormMsg');
+  const qfName = document.getElementById('qfName');
+  const qfPhone = document.getElementById('qfPhone');
+  const qfSubmit = document.getElementById('qfSubmit');
+  const qfNameErr = document.getElementById('qfNameErr');
+  const qfPhoneErr = document.getElementById('qfPhoneErr');
+  const qfToken = document.getElementById('qfToken');
 
   if (qfOpen && qfOverlay) {
-    qfOpen.addEventListener('click', () => qfOverlay.classList.add('is-open'));
+    let qfOpenedAt = 0;
+
+    // Open / close
+    qfOpen.addEventListener('click', () => {
+      qfOverlay.classList.add('is-open');
+      qfOpenedAt = Date.now();
+      qfToken.value = Math.random().toString(36).slice(2) + Date.now().toString(36);
+    });
     qfClose.addEventListener('click', () => qfOverlay.classList.remove('is-open'));
     qfOverlay.addEventListener('click', (e) => {
       if (e.target === qfOverlay) qfOverlay.classList.remove('is-open');
     });
 
+    // Phone formatting
+    function formatPhone(raw) {
+      const d = raw.replace(/\D/g, '');
+      let digits = d;
+      if (digits.startsWith('7') || digits.startsWith('8')) digits = '7' + digits.slice(1);
+      else if (!digits.startsWith('7')) digits = '7' + digits;
+      let out = '+7';
+      if (digits.length > 1) out += ' (' + digits.slice(1, 4);
+      if (digits.length >= 4) out += ')';
+      if (digits.length > 4) out += ' ' + digits.slice(4, 7);
+      if (digits.length > 7) out += '-' + digits.slice(7, 9);
+      if (digits.length > 9) out += '-' + digits.slice(9, 11);
+      return out;
+    }
+
+    function phoneDigits(val) { const d = val.replace(/\D/g, ''); return d.startsWith('8') ? '7' + d.slice(1) : d; }
+
+    qfPhone.addEventListener('input', () => {
+      const raw = qfPhone.value;
+      if (!raw) return;
+      const cursor = qfPhone.selectionStart;
+      const before = raw.slice(0, cursor).replace(/\D/g, '').length;
+      const formatted = formatPhone(raw);
+      qfPhone.value = formatted;
+      // Restore cursor
+      let count = 0, pos = 0;
+      for (let i = 0; i < formatted.length && count < before; i++) {
+        if (/\d/.test(formatted[i])) count++;
+        pos = i + 1;
+      }
+      qfPhone.setSelectionRange(pos, pos);
+      validate();
+    });
+
+    qfPhone.addEventListener('focus', () => {
+      if (!qfPhone.value) qfPhone.value = '+7 (';
+    });
+
+    qfPhone.addEventListener('blur', () => {
+      if (qfPhone.value === '+7 (' || qfPhone.value === '+7') qfPhone.value = '';
+      validate();
+    });
+
+    qfName.addEventListener('input', validate);
+    qfName.addEventListener('blur', validate);
+
+    function validate() {
+      const nameOk = qfName.value.trim().length >= 2;
+      const digits = phoneDigits(qfPhone.value);
+      const phoneOk = digits.length >= 11 && digits.startsWith('7');
+
+      qfNameErr.textContent = qfName.value && !nameOk ? 'Минимум 2 символа' : '';
+      qfPhoneErr.textContent = qfPhone.value && qfPhone.value !== '+7 (' && !phoneOk ? 'Формат: +7 (XXX) XXX-XX-XX' : '';
+      qfSubmit.disabled = !(nameOk && phoneOk);
+      return nameOk && phoneOk;
+    }
+
+    // Fake success for bots
+    function fakeSuccess() {
+      qfMsg.style.color = '#1f7a3f';
+      qfMsg.textContent = 'Заявка отправлена! Перезвоним в ближайшее время.';
+      qfForm.reset();
+      qfSubmit.disabled = true;
+      setTimeout(() => { qfOverlay.classList.remove('is-open'); qfMsg.textContent = ''; }, 2000);
+    }
+
     qfForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const phone = qfForm.querySelector('[name="phone"]').value.trim();
-      if (!/^[\d\s\+\(\)\-]{7,20}$/.test(phone)) {
-        qfMsg.textContent = 'Введите корректный номер телефона.';
-        qfMsg.style.color = '#b1261f';
-        return;
-      }
-      const submitBtn = qfForm.querySelector('button[type="submit"]');
-      submitBtn.disabled = true;
+      if (!validate()) return;
+
+      // Bot checks — silent fail with fake success
+      const honeypot = qfForm.querySelector('[name="website"]');
+      if (honeypot && honeypot.value) { fakeSuccess(); return; }
+      if (!qfToken.value) { fakeSuccess(); return; }
+      if (Date.now() - qfOpenedAt < 3000) { fakeSuccess(); return; }
+
+      qfSubmit.disabled = true;
       qfMsg.textContent = 'Отправляем...';
       qfMsg.style.color = '';
+
       try {
         const fd = new FormData();
-        fd.append('name', qfForm.querySelector('[name="name"]').value);
-        fd.append('phone', phone);
+        fd.append('name', qfName.value.trim());
+        fd.append('phone', qfPhone.value.trim());
         fd.append('service', 'Быстрая заявка с мобильной формы');
         const res = await fetch('/send.php', { method: 'POST', body: fd });
         const data = await res.json();
         if (res.ok && data && data.ok === true) {
-          qfMsg.style.color = '#1f7a3f';
-          qfMsg.textContent = 'Заявка отправлена! Перезвоним в ближайшее время.';
-          qfForm.reset();
-          setTimeout(() => { qfOverlay.classList.remove('is-open'); qfMsg.textContent = ''; }, 2000);
+          fakeSuccess();
         } else {
           qfMsg.style.color = '#b1261f';
           qfMsg.textContent = 'Не удалось отправить. Попробуйте ещё раз.';
+          qfSubmit.disabled = false;
         }
       } catch {
         qfMsg.style.color = '#b1261f';
         qfMsg.textContent = 'Ошибка сети. Попробуйте позвонить.';
-      } finally {
-        submitBtn.disabled = false;
+        qfSubmit.disabled = false;
       }
     });
   }
