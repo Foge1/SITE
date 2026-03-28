@@ -118,9 +118,15 @@ const navbar = document.getElementById('navbar');
       });
     });
   }
+  const stickyBar = document.querySelector('.mobile-sticky-bar');
+  const heroSection = document.querySelector('.home-hero') || document.querySelector('.service-hero');
+
   window.addEventListener('scroll', () => {
-    if (!navbar) return;
-    navbar.classList.toggle('scrolled', window.scrollY > 10);
+    if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 10);
+    if (stickyBar && heroSection) {
+      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+      stickyBar.classList.toggle('visible', window.scrollY > heroBottom);
+    }
   });
 
   const tsField = document.getElementById('form-timestamp');
