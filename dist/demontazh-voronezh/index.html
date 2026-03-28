@@ -527,7 +527,25 @@
   <span class="f-copy">© 2024–2026 ГРУЗЪ — Переезды и перевозки по городу и области</span>
 </footer>
 
-<a href="tel:+79009529391" class="mobile-call-cta" aria-label="Позвонить по номеру +7 900 952-93-91">Позвонить</a>
+<div class="mobile-sticky-bar">
+  <a href="tel:+79009529391" class="mobile-sticky-call">Позвонить</a>
+  <button type="button" class="mobile-sticky-form" id="openQuickForm">Заявка</button>
+</div>
+
+<div class="quick-form-overlay" id="quickFormOverlay">
+  <div class="quick-form-modal">
+    <button type="button" class="quick-form-close" id="closeQuickForm" aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="quick-form-title">Оставьте заявку — перезвоним за 5 минут</div>
+    <form id="quickForm">
+      <input type="text" name="name" placeholder="Ваше имя" class="quick-form-input">
+      <input type="tel" name="phone" placeholder="Телефон" required class="quick-form-input">
+      <button type="submit" class="quick-form-submit">Отправить заявку</button>
+    </form>
+    <div class="quick-form-msg" id="quickFormMsg"></div>
+  </div>
+</div>
 
 <button class="calc-fab" id="calc-fab" type="button" aria-label="Расчёт стоимости">
   <svg class="calc-fab-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg>

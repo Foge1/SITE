@@ -436,3 +436,31 @@ const navbar = document.getElementById('navbar');
     workTrack.addEventListener('scroll', updateArrows, { passive: true });
     updateArrows();
   }
+
+  /* ── Quick form modal ── */
+  const qfOpen = document.getElementById('openQuickForm');
+  const qfClose = document.getElementById('closeQuickForm');
+  const qfOverlay = document.getElementById('quickFormOverlay');
+  const qfForm = document.getElementById('quickForm');
+  const qfMsg = document.getElementById('quickFormMsg');
+
+  if (qfOpen && qfOverlay) {
+    qfOpen.addEventListener('click', () => qfOverlay.classList.add('is-open'));
+    qfClose.addEventListener('click', () => qfOverlay.classList.remove('is-open'));
+    qfOverlay.addEventListener('click', (e) => {
+      if (e.target === qfOverlay) qfOverlay.classList.remove('is-open');
+    });
+
+    qfForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = qfForm.querySelector('[name="name"]').value;
+      const phone = qfForm.querySelector('[name="phone"]').value;
+      console.log('Quick form:', { name, phone });
+      qfMsg.textContent = 'Заявка отправлена! Перезвоним в ближайшее время.';
+      qfForm.reset();
+      setTimeout(() => {
+        qfOverlay.classList.remove('is-open');
+        qfMsg.textContent = '';
+      }, 2000);
+    });
+  }
