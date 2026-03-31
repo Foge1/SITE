@@ -1189,6 +1189,7 @@
     .service-hero-left {
       border-right: none;
       padding: 34px 20px 32px;
+      overflow: hidden;
     }
     .home-hero-photo,
     .service-hero-media {
@@ -1208,8 +1209,8 @@
     .home-hero-desc,
     .service-hero-desc { margin-top: 20px; max-width: 100%; }
     .home-hero-cta-row,
-    .service-hero-cta-row { margin-top: 28px; flex-wrap: wrap; }
-    .btn-main, .btn-outline { width: 100%; text-align: center; padding: 15px 20px; }
+    .service-hero-cta-row { margin-top: 28px; flex-wrap: wrap; max-width: 100%; }
+    .btn-main, .btn-outline { width: 100%; text-align: center; padding: 15px 16px; box-sizing: border-box; }
     .home-hero-stat,
     .service-hero-stat { flex: 1; min-width: 0; }
     .home-hero-stat:last-child,
@@ -1265,9 +1266,16 @@
       gap: 16px;
     }
     .mid-cta-phone { font-size: 26px; }
-    .mid-cta-actions { flex-wrap: wrap; }
-    .mid-cta-tg { flex: 1; justify-content: center; text-align: center; padding: 14px 16px; }
-    .mid-cta-btn { flex: 1; text-align: center; width: auto; padding: 15px 16px; }
+    .mid-cta-actions { flex-wrap: nowrap; width: 100%; }
+    .mid-cta-tg {
+      flex: 1; min-width: 0; justify-content: center; text-align: center;
+      padding: 12px 8px; font-size: 13px; white-space: nowrap;
+    }
+    .mid-cta-btn {
+      flex: 1; min-width: 0; text-align: center; width: auto;
+      padding: 12px 8px; white-space: nowrap;
+    }
+    .mid-cta-btn span { font-size: 13px; }
 
     .service-hero-subtitle {
       max-width: 100%;
