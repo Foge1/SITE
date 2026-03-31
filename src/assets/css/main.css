@@ -407,8 +407,6 @@
   .mobile-sticky-msg { display: none; }
   .quick-form-overlay { display: none; }
   .msg-picker-overlay { display: none; }
-  .hero-trust-compact { display: none; }
-
   .hero-msg-row {
     display: inline-flex;
     align-items: center;
@@ -1168,11 +1166,10 @@
     .nav-mobile-btn:hover { color: var(--orange); border-color: var(--orange); }
     .nav-mobile-btn svg { width: 20px; height: 20px; }
     .nav-phone {
-      width: 100%;
-      order: 3;
-      justify-content: flex-start;
-      font-size: 14px;
-      padding: 6px 0 2px;
+      order: 2;
+      font-size: 13px;
+      padding: 0;
+      min-height: 44px;
     }
     .nav-toggle { display: inline-flex; }
     .nav-links {
@@ -1191,7 +1188,6 @@
       font-size: 14px;
       padding: 12px 2px;
     }
-    .nav-phone { font-size: 14px; }
     .home-hero,
     .service-hero {
       display: block;
@@ -1232,15 +1228,15 @@
     .service-hero-cta-row { margin-top: 28px; flex-wrap: wrap; }
     .btn-main, .btn-outline { width: 100%; text-align: center; padding: 15px 20px; }
     .home-hero-stat,
-    .service-hero-stat { min-width: 50%; }
+    .service-hero-stat { flex: 1; min-width: 0; }
     .home-hero-stat:last-child,
-    .service-hero-stat:last-child { min-width: 100%; padding-left: 0; padding-top: 18px; }
+    .service-hero-stat:last-child { padding-left: 0; }
     .home-hero-stat:nth-child(2),
-    .service-hero-stat:nth-child(2) { padding-left: 0; }
+    .service-hero-stat:nth-child(2) { padding-left: 12px; }
     .home-hero-stat:not(:last-child),
-    .service-hero-stat:not(:last-child) { padding-right: 16px; }
+    .service-hero-stat:not(:last-child) { padding-right: 12px; }
     .home-hero-stat-big,
-    .service-hero-stat-big { font-size: 36px; }
+    .service-hero-stat-big { font-size: 28px; }
     .sec-head { padding: 36px 20px 24px; flex-direction: column; align-items: flex-start; gap: 10px; }
     .sec-sub { text-align: left; max-width: 100%; }
     .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1277,7 +1273,7 @@
     .f-links { flex-wrap: wrap; justify-content: center; }
     footer { flex-direction: column; gap: 16px; padding: 24px 20px; text-align: center; }
     .home-hero-stats-row,
-    .service-hero-stats-row { flex-wrap: wrap; }
+    .service-hero-stats-row { flex-wrap: nowrap; margin-top: 24px; }
     .home-hero-ticker { display: none; }
     .mid-cta-inner {
       flex-direction: column;
@@ -1800,17 +1796,26 @@
       border-bottom: 1px solid var(--border);
     }
     .reviews-dot {
-      width: 7px; height: 7px;
+      width: 10px; height: 10px;
       border-radius: 50%;
-      background: var(--border);
+      background: var(--border-dk);
+      opacity: 0.5;
       border: none;
       padding: 0;
       cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
+      transition: background 0.2s, opacity 0.2s;
+      position: relative;
+    }
+    .reviews-dot::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px; height: 44px;
     }
     .reviews-dot.active {
       background: var(--orange);
-      transform: scale(1.25);
+      opacity: 1;
     }
 
     body {
@@ -2067,18 +2072,8 @@
     .mobile-sticky-form { flex: 1; font-size: 14px; }
 
     /* ── Touch zones ── */
-    .reviews-dot { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
-    .nav-phone { min-height: 44px; display: flex; align-items: center; }
     .hero-tg-link { min-height: 44px; display: inline-flex; align-items: center; }
     .nav-links a { min-height: 44px; display: flex; align-items: center; }
-
-    /* ── Trust bar compact ── */
-    .hero-trust-compact {
-      display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
-      font-size: 11px; font-weight: 600; color: var(--ink-soft);
-      margin-top: 12px; letter-spacing: 0.02em;
-    }
-    .hero-trust-compact svg { width: 14px; height: 14px; color: var(--orange); flex-shrink: 0; }
   }
 
   /* ── Mobile nav action buttons (phone + telegram) ── */
