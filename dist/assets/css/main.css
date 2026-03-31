@@ -1236,11 +1236,14 @@
     .service-hero-stat-big { font-size: 28px; }
     .sec-head { padding: 36px 20px 24px; flex-direction: column; align-items: flex-start; gap: 10px; }
     .sec-sub { text-align: left; max-width: 100%; }
-    .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .services-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--border);
+    }
     .why-grid { grid-template-columns: 1fr; }
     .service-card {
-      border-right: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      border: none;
       padding: 16px 12px;
       text-align: center;
     }
@@ -1248,8 +1251,6 @@
     .service-card .svc-text { display: none; }
     .service-card .svc-price { margin-top: 8px; font-size: 12px; }
     .service-card .svc-name { font-size: 14px; margin-bottom: 0; }
-    .service-card:nth-child(2n) { border-right: none; }
-    .service-card:nth-child(n+5) { border-bottom: none; }
     .service-card::before { display: none; }
     .why-item { border-right: none; padding: 32px 20px; border-bottom: 1px solid var(--border); }
     .why-item:last-child { border-bottom: none; }
