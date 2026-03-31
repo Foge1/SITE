@@ -404,7 +404,19 @@
 
   .mobile-call-cta { display: none; }
   .mobile-sticky-bar { display: none; }
+  .mobile-sticky-msg { display: none; }
   .quick-form-overlay { display: none; }
+  .msg-picker-overlay { display: none; }
+  .hero-trust-compact { display: none; }
+
+  .hero-msg-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 14px;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.5s forwards;
+  }
 
   .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1); }
   .reveal.visible { opacity: 1; transform: none; }
@@ -1206,10 +1218,11 @@
     }
     .home-hero-title,
     .service-hero-title {
-      font-size: clamp(38px, 13.2vw, 72px);
-      line-height: 0.9;
-      max-width: 10ch;
+      font-size: clamp(32px, 9.5vw, 52px);
+      line-height: 0.92;
+      max-width: 14ch;
     }
+    .service-hero-breadcrumbs { display: none; }
     .service-hero--golden .service-hero-title {
       max-width: 100%;
     }
@@ -1228,7 +1241,7 @@
     .service-hero-stat:not(:last-child) { padding-right: 16px; }
     .home-hero-stat-big,
     .service-hero-stat-big { font-size: 36px; }
-    .sec-head { padding: 48px 20px 32px; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .sec-head { padding: 36px 20px 24px; flex-direction: column; align-items: flex-start; gap: 10px; }
     .sec-sub { text-align: left; max-width: 100%; }
     .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .why-grid { grid-template-columns: 1fr; }
@@ -1998,6 +2011,74 @@
     .calc-body { padding: 16px 18px 0; }
     .calc-result { margin: 16px 18px 0; }
     .calc-footer { padding: 16px 18px calc(18px + env(safe-area-inset-bottom)); }
+
+    /* ── Messenger picker ── */
+    .msg-picker-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(17,17,16,0.5);
+      display: flex; align-items: flex-end; justify-content: center;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+    }
+    .msg-picker-overlay.is-open { opacity: 1; visibility: visible; }
+    .msg-picker-sheet {
+      width: 100%; max-width: 400px;
+      padding: 20px 14px calc(20px + env(safe-area-inset-bottom));
+      background: var(--white); border-radius: 16px 16px 0 0;
+      display: flex; flex-direction: column; gap: 8px;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+    }
+    .msg-picker-overlay.is-open .msg-picker-sheet { transform: translateY(0); }
+    .msg-picker-title {
+      font-size: 16px; font-weight: 700; color: var(--ink);
+      text-align: center; padding-bottom: 8px;
+    }
+    .msg-picker-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; border-radius: 12px;
+      background: var(--off); color: var(--ink);
+      font-size: 15px; font-weight: 600;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .msg-picker-btn:hover { background: var(--border); }
+    .msg-picker-btn svg { width: 20px; height: 20px; }
+    .msg-picker-cancel {
+      min-height: 48px; border: none; border-radius: 12px;
+      background: transparent; color: var(--ink-soft);
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600;
+      cursor: pointer; margin-top: 4px;
+    }
+
+    /* ── Sticky bar 3 buttons ── */
+    .mobile-sticky-msg {
+      display: flex; align-items: center; justify-content: center;
+      flex: 1; min-height: 56px; border-radius: 14px;
+      background: var(--white); color: var(--ink);
+      border: 1.5px solid var(--border-dk);
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+      letter-spacing: 0.02em; cursor: pointer;
+      box-shadow: 0 6px 20px rgba(17, 17, 16, 0.18);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .mobile-sticky-msg:hover { background: var(--off); }
+    .mobile-sticky-msg:active { transform: translateY(1px); }
+    .mobile-sticky-call { flex: 2; }
+    .mobile-sticky-form { flex: 1; font-size: 14px; }
+
+    /* ── Touch zones ── */
+    .reviews-dot { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+    .nav-phone { min-height: 44px; display: flex; align-items: center; }
+    .hero-tg-link { min-height: 44px; display: inline-flex; align-items: center; }
+    .nav-links a { min-height: 44px; display: flex; align-items: center; }
+
+    /* ── Trust bar compact ── */
+    .hero-trust-compact {
+      display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+      font-size: 11px; font-weight: 600; color: var(--ink-soft);
+      margin-top: 12px; letter-spacing: 0.02em;
+    }
+    .hero-trust-compact svg { width: 14px; height: 14px; color: var(--orange); flex-shrink: 0; }
   }
 
   /* ── Mobile nav action buttons (phone + telegram) ── */

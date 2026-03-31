@@ -10,6 +10,7 @@
     <div class="contact-info reveal">
       <div class="ci-row"><span class="ci-label">Телефон</span><a class="ci-val" href="tel:{{ site.phoneHref }}">{{ site.phoneDisplay }}</a></div>
       <div class="ci-row"><span class="ci-label">Telegram</span><a class="ci-val" href="{{ site.social.telegram }}" target="_blank" rel="noopener">{{ site.phoneDisplay }}</a></div>
+      <div class="ci-row"><span class="ci-label">MAX</span><a class="ci-val" href="{{ site.social.max }}" target="_blank" rel="noopener">Написать в MAX</a></div>
       <div class="ci-row"><span class="ci-label">Работаем</span><span class="ci-val">{{ site.workHours }}</span></div>
       <div class="ci-row"><span class="ci-label">Район</span><span class="ci-val">{{ site.serviceArea }}</span></div>
     </div>
@@ -21,32 +22,11 @@
         </div>
         <input type="hidden" name="_timestamp" id="form-timestamp">
         <div class="field-wrap">
-          <input type="text" name="name" placeholder="Ваше имя">
+          <input type="text" name="name" placeholder="Ваше имя" required>
         </div>
 
         <div class="field-wrap">
           <input type="tel" name="phone" placeholder="Телефон для связи" required>
-        </div>
-
-        <div class="field-wrap">
-          <select name="service" required>
-            <option value="" disabled selected>Что нужно сделать?</option>
-            <option>Помощь на час</option>
-            <option>Газель с бригадой</option>
-            <option>Квартирный переезд</option>
-            <option>Офисный переезд</option>
-            <option>Такелажные работы</option>
-            <option>Вывоз мусора / старой мебели</option>
-            <option>Другое</option>
-          </select>
-        </div>
-
-        <div class="field-wrap">
-          <input type="text" name="address" placeholder="Адрес (откуда)">
-        </div>
-
-        <div class="field-wrap">
-          <textarea name="comment" rows="4" placeholder="Что везём, сколько этажей, есть ли лифт..."></textarea>
         </div>
 
         <button class="submit-btn" type="submit">Отправить заявку</button>

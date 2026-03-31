@@ -443,6 +443,18 @@ const navbar = document.getElementById('navbar');
     updateArrows();
   }
 
+  /* ── Messenger picker ── */
+  const msgOpen = document.getElementById('openMsgPicker');
+  const msgClose = document.getElementById('closeMsgPicker');
+  const msgOverlay = document.getElementById('msgPickerOverlay');
+  if (msgOpen && msgOverlay) {
+    msgOpen.addEventListener('click', () => msgOverlay.classList.add('is-open'));
+    msgClose.addEventListener('click', () => msgOverlay.classList.remove('is-open'));
+    msgOverlay.addEventListener('click', (e) => {
+      if (e.target === msgOverlay) msgOverlay.classList.remove('is-open');
+    });
+  }
+
   /* ── Quick form modal ── */
   const qfOpen = document.getElementById('openQuickForm');
   const qfClose = document.getElementById('closeQuickForm');

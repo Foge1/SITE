@@ -108,6 +108,9 @@
     <a href="https://t.me/gruzvrn1" class="nav-mobile-btn" target="_blank" rel="noopener" aria-label="Написать в Telegram">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="m22 2-11 11"/></svg>
     </a>
+    <a href="https://max.ru/u/f9LHodD0cOJeeW7my7jfD3c-5-MjmpNAfgNbjoDwgVOoQjfSVlq7djURxhk" class="nav-mobile-btn" target="_blank" rel="noopener" aria-label="Написать в MAX">
+      <span style="font-size:11px;font-weight:700;letter-spacing:0.05em">MAX</span>
+    </a>
     <a href="tel:+79009529391" class="nav-mobile-btn" aria-label="Позвонить по номеру +7 900 952-93-91">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
     </a>
@@ -145,10 +148,19 @@
         <a href="#contact" class="btn-main"><span>Вызвать мастера</span></a>
         <a href="tel:+79009529391" class="btn-outline">Позвонить сейчас</a>
       </div>
-      <a href="https://t.me/gruzvrn1" class="hero-tg-link" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="m22 2-11 11"/></svg>
-        <span>Написать в Telegram</span>
-      </a>
+      <div class="hero-msg-row">
+        <a href="https://t.me/gruzvrn1" class="hero-tg-link" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="m22 2-11 11"/></svg>
+          <span>Telegram</span>
+        </a>
+        <a href="https://max.ru/u/f9LHodD0cOJeeW7my7jfD3c-5-MjmpNAfgNbjoDwgVOoQjfSVlq7djURxhk" class="hero-tg-link" target="_blank" rel="noopener">
+          <span>MAX</span>
+        </a>
+      </div>
+      <div class="hero-trust-compact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        10+ лет · 20+ грузчиков · Выезд от 1 часа
+      </div>
       <ul class="service-hero-trust-list"><li class="service-hero-trust-item reveal rd1">
           <span class="service-hero-trust-dot"></span>
           <span>Свой инструмент — ничего не нужно искать</span>
@@ -280,6 +292,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="m22 2-11 11"/></svg>
         Telegram
       </a>
+      <a href="https://max.ru/u/f9LHodD0cOJeeW7my7jfD3c-5-MjmpNAfgNbjoDwgVOoQjfSVlq7djURxhk" class="mid-cta-tg" target="_blank" rel="noopener">MAX</a>
       <a href="#contact" class="btn-main mid-cta-btn"><span>Оставить заявку</span></a>
     </div>
   </div>
@@ -493,6 +506,7 @@
     <div class="contact-info reveal">
       <div class="ci-row"><span class="ci-label">Телефон</span><a class="ci-val" href="tel:+79009529391">+7 900 952-93-91</a></div>
       <div class="ci-row"><span class="ci-label">Telegram</span><a class="ci-val" href="https://t.me/gruzvrn1" target="_blank" rel="noopener">+7 900 952-93-91</a></div>
+      <div class="ci-row"><span class="ci-label">MAX</span><a class="ci-val" href="https://max.ru/u/f9LHodD0cOJeeW7my7jfD3c-5-MjmpNAfgNbjoDwgVOoQjfSVlq7djURxhk" target="_blank" rel="noopener">Написать в MAX</a></div>
       <div class="ci-row"><span class="ci-label">Работаем</span><span class="ci-val">Ежедневно 7:00 — 23:00</span></div>
       <div class="ci-row"><span class="ci-label">Район</span><span class="ci-val">По городу и пригородам до 100 км</span></div>
     </div>
@@ -504,32 +518,11 @@
         </div>
         <input type="hidden" name="_timestamp" id="form-timestamp">
         <div class="field-wrap">
-          <input type="text" name="name" placeholder="Ваше имя">
+          <input type="text" name="name" placeholder="Ваше имя" required>
         </div>
 
         <div class="field-wrap">
           <input type="tel" name="phone" placeholder="Телефон для связи" required>
-        </div>
-
-        <div class="field-wrap">
-          <select name="service" required>
-            <option value="" disabled selected>Что нужно сделать?</option>
-            <option>Помощь на час</option>
-            <option>Газель с бригадой</option>
-            <option>Квартирный переезд</option>
-            <option>Офисный переезд</option>
-            <option>Такелажные работы</option>
-            <option>Вывоз мусора / старой мебели</option>
-            <option>Другое</option>
-          </select>
-        </div>
-
-        <div class="field-wrap">
-          <input type="text" name="address" placeholder="Адрес (откуда)">
-        </div>
-
-        <div class="field-wrap">
-          <textarea name="comment" rows="4" placeholder="Что везём, сколько этажей, есть ли лифт..."></textarea>
         </div>
 
         <button class="submit-btn" type="submit">Отправить заявку</button>
@@ -547,7 +540,20 @@
 
 <div class="mobile-sticky-bar">
   <a href="tel:+79009529391" class="mobile-sticky-call">Позвонить</a>
+  <button type="button" class="mobile-sticky-msg" id="openMsgPicker">Написать</button>
   <button type="button" class="mobile-sticky-form" id="openQuickForm">Заявка</button>
+</div>
+
+<div class="msg-picker-overlay" id="msgPickerOverlay">
+  <div class="msg-picker-sheet">
+    <div class="msg-picker-title">Написать нам</div>
+    <a href="https://t.me/gruzvrn1" class="msg-picker-btn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="m22 2-11 11"/></svg>
+      Telegram
+    </a>
+    <a href="https://max.ru/u/f9LHodD0cOJeeW7my7jfD3c-5-MjmpNAfgNbjoDwgVOoQjfSVlq7djURxhk" class="msg-picker-btn" target="_blank" rel="noopener">MAX</a>
+    <button type="button" class="msg-picker-cancel" id="closeMsgPicker">Отмена</button>
+  </div>
 </div>
 
 <div class="quick-form-overlay" id="quickFormOverlay">
