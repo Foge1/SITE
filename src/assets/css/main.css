@@ -1210,7 +1210,7 @@
     .service-hero-desc { margin-top: 20px; max-width: 100%; }
     .home-hero-cta-row,
     .service-hero-cta-row { margin-top: 28px; flex-wrap: wrap; max-width: 100%; }
-    .btn-main, .btn-outline { width: 100%; text-align: center; padding: 15px 16px; box-sizing: border-box; }
+    .btn-main, .btn-outline { width: 100%; max-width: 100%; text-align: center; padding: 15px 16px; box-sizing: border-box; }
     .home-hero-stat,
     .service-hero-stat { flex: 1; min-width: 0; }
     .home-hero-stat:last-child,
@@ -1268,11 +1268,11 @@
     .mid-cta-phone { font-size: 26px; }
     .mid-cta-actions { flex-wrap: nowrap; width: 100%; }
     .mid-cta-tg {
-      flex: 1; min-width: 0; justify-content: center; text-align: center;
+      flex: 1 1 0; min-width: 0; justify-content: center; text-align: center;
       padding: 12px 8px; font-size: 13px; white-space: nowrap;
     }
     .mid-cta-btn {
-      flex: 1; min-width: 0; text-align: center; width: auto;
+      flex: 1 1 0; min-width: 0; text-align: center; width: auto;
       padding: 12px 8px; white-space: nowrap;
     }
     .mid-cta-btn span { font-size: 13px; }
@@ -2165,4 +2165,3 @@
     background: rgba(255,255,255,0.06);
   }
   .mid-cta-tg svg { width: 18px; height: 18px; }
-  .mid-cta-btn { width: auto; }
