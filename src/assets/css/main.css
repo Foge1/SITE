@@ -1226,7 +1226,22 @@
     .sec-sub { text-align: left; max-width: 100%; }
     .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .why-grid { grid-template-columns: 1fr; }
-    .service-card { border-right: 1px solid var(--border); padding: 30px 20px; }
+    .service-card {
+      border-right: 1px solid var(--border); padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto auto;
+      gap: 0;
+    }
+    .service-card .svc-icon-wrap {
+      grid-column: 2; grid-row: 1;
+      margin-bottom: 0; width: 40px; height: 40px;
+    }
+    .service-card .svc-icon { width: 20px; height: 20px; }
+    .service-card .svc-name { grid-column: 1; grid-row: 1; align-self: center; margin-bottom: 6px; }
+    .service-card .svc-text { grid-column: 1 / -1; grid-row: 2; }
+    .service-card .svc-price { grid-column: 1 / -1; grid-row: 3; margin-top: 10px; }
+    .service-card .service-card-hit { grid-column: 1 / -1; grid-row: 1 / -1; }
     .service-card:nth-child(2n) { border-right: none; }
     .service-card:nth-child(n+5) { border-bottom: none; }
     .why-item { border-right: none; padding: 32px 20px; border-bottom: 1px solid var(--border); }
