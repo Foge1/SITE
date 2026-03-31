@@ -42,7 +42,6 @@
       }
     },
     "sectionOrder": [
-      "process",
       "includes",
       "pricing",
       "faq"

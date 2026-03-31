@@ -151,9 +151,7 @@
       "buttonLabel": "Оставить заявку"
     },
     "sectionOrder": [
-      "advantages",
       "includes",
-      "process",
       "pricing",
       "faq"
     ],

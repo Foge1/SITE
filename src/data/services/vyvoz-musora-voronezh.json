@@ -43,8 +43,6 @@
     },
     "sectionOrder": [
       "includes",
-      "process",
-      "advantages",
       "pricing",
       "faq"
     ],

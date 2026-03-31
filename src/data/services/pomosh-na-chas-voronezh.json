@@ -43,9 +43,7 @@
     },
     "sectionOrder": [
       "includes",
-      "advantages",
       "pricing",
-      "process",
       "faq"
     ],
     "sections": {
