@@ -11,6 +11,8 @@ permalink: /index.html
 {% include "photo-strip.njk" %}
 {% include "mid-cta.njk" %}
 {% include "reviews.njk" %}
+{% set ctaButtonLabel = 'Позвонить сейчас' %}
+{% set ctaButtonHref = 'tel:' + site.phoneHref %}
 {% include "cta.njk" %}
 {% include "contact.njk" %}
 {% include "footer.njk" %}
