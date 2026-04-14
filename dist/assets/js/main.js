@@ -158,7 +158,7 @@ const navbar = document.getElementById('navbar');
       formData.delete('website');
 
       const ts = parseInt(document.getElementById('form-timestamp').value, 10);
-      if (!ts || Date.now() - ts < 4000) {
+      if (!ts || Date.now() - ts < 1500) {
         setFormMessage('Не удалось отправить заявку. Попробуйте ещё раз.', 'is-error');
         if (submitButton) submitButton.disabled = false;
         return;
@@ -556,7 +556,6 @@ const navbar = document.getElementById('navbar');
       const honeypot = qfForm.querySelector('[name="website"]');
       if (honeypot && honeypot.value) { fakeSuccess(); return; }
       if (!qfToken.value) { fakeSuccess(); return; }
-      if (Date.now() - qfOpenedAt < 3000) { fakeSuccess(); return; }
 
       qfSubmit.disabled = true;
       qfMsg.textContent = 'Отправляем...';
